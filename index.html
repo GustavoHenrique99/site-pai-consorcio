@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reis Consultoria Financeira</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #C8102E;
+            /* Vermelho Reis */
+            --dark: #000000;
+            --gray: #f8f9fa;
+            --text: #333;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            background-color: var(--white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: var(--white);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .logo-text {
+            font-weight: 900;
+            font-size: 24px;
+            color: var(--dark);
+            text-transform: uppercase;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .btn-simular-topo {
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 10px 25px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(200, 16, 46, 0.3);
+        }
+
+        .btn-simular-topo:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(20, 0, 0, 0.8) 100%), url('img/hero_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 110px 5% 60px 5%;
+            /* Padding reduzido para subir tudo */
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            /* Alinhamento no topo */
+            justify-content: center;
+            gap: 40px;
+            /* Reduzi o gap entre texto e form */
+            min-height: 90vh;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+            color: white;
+            padding-top: 10px;
+        }
+
+        .tag-hero {
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+            /* Reduzi a margem para colar no form */
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        /* --- FORMULÁRIO (PUXADO PARA CIMA) --- */
+        .form-box {
+            background: var(--white);
+            padding: 30px;
+            /* Padding interno um pouco menor */
+            border-radius: 8px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border-top: 8px solid var(--primary);
+            position: relative;
+            transition: all 0.3s ease-in-out;
+            margin-top: -10px;
+            /* Truque para subir o bloco em relação ao texto */
+        }
+
+        .form-box h3 {
+            text-align: center;
+            color: var(--dark);
+            margin-bottom: 5px;
+            font-size: 22px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .form-sub {
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 12px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            color: #444;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+            transition: 0.3s;
+            background: #fdfdfd;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--primary);
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.1);
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .currency-symbol {
+            position: absolute;
+            left: 12px;
+            top: 12px;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .input-currency {
+            padding-left: 40px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--dark);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+            border-bottom: 4px solid #333;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary);
+            border-color: #a0001e;
+            transform: translateY(-2px);
+        }
+
+        /* Botão Voltar */
+        .btn-voltar {
+            margin-top: 20px;
+            border: none;
+            background: none;
+            text-decoration: underline;
+            cursor: pointer;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+
+        .btn-voltar:hover {
+            background-color: #f0f0f0;
+            color: var(--dark);
+            transform: scale(1.05);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- OUTRAS SEÇÕES (MANTIDAS) --- */
+        .sobre {
+            padding: 80px 5%;
+            background: var(--dark);
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .sobre-img {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .sobre-img img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: -20px 20px 0px var(--primary);
+            border: 2px solid #333;
+        }
+
+        .sobre-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .section-tag {
+            color: var(--primary);
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            border-left: 3px solid var(--primary);
+            padding-left: 15px;
+        }
+
+        .stat-num {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-desc {
+            font-size: 13px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .beneficios {
+            padding: 80px 5%;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .grid-beneficios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card-ben {
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            transition: 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+
+        .card-ben:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-bottom-color: var(--primary);
+        }
+
+        .card-ben h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .card-ben p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .seguranca-final {
+            padding: 40px 5%;
+            background: var(--gray);
+            text-align: center;
+        }
+
+        .seguranca-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .seguranca-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
+        }
+
+        .seguranca-item span {
+            font-size: 12px;
+            font-weight: 700;
+            color: #555;
+            text-transform: uppercase;
+        }
+
+        footer {
+            background: #0a0a0a;
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 13px;
+            border-top: 5px solid var(--primary);
+        }
+
+        .footer-info {
+            max-width: 900px;
+            margin: 0 auto 30px;
+            line-height: 2;
+            color: #ccc;
+        }
+
+        .footer-info strong {
+            color: #fff;
+            display: block;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .footer-contact {
+            color: var(--primary);
+            font-weight: 700;
+            display: block;
+            margin-top: 15px;
+            font-size: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 80px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                border-left: none;
+                padding: 0;
+                font-size: 16px;
+            }
+
+            .sobre {
+                flex-direction: column-reverse;
+                padding: 50px 5%;
+            }
+
+            .sobre-img img {
+                box-shadow: 10px 10px 0px var(--primary);
+            }
+
+            .seguranca-container {
+                gap: 15px;
+            }
+
+            .form-box {
+                margin-top: 20px;
+            }
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            color: white;
+            /* Cor do ícone */
+            font-size: 28px;
+            /* Tamanho do ícone */
+            text-decoration: none;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            /* Fica vermelho ao passar o mouse */
+            opacity: 1;
+            transform: translateY(-5px);
+        }
+
+        /* BOTÃO WHATSAPP COM EFEITO DE PULSO */
+        .btn-whatsapp-pos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 18px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 16px;
+            text-transform: uppercase;
+            margin: 20px 0 10px 0;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            border-bottom: 4px solid #128c7e;
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                transform: scale(1.03);
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .btn-whatsapp-pos:hover {
+            background-color: #128c7e;
+            animation: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-text">REIS <span>CONSULTORIA</span></div>
+        <a href="#simular" class="btn-simular-topo">SIMULAR AGORA</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="tag-hero">Atendimento em Todo Brasil</span>
+            <h1>Realize o sonho da Casa Própria ou Veículo <br><span>Sem Juros</span></h1>
+            <p>Mesmo que hoje você não tenha muito dinheiro para dar de entrada. Descubra como conquistar seu patrimônio
+                com as menores taxas do mercado.</p>
+            <p>✅ Crédito exclusivo com taxas especiais.</p>
+        </div>
+
+        <div class="form-box" id="simular">
+            <div id="form-container-div" class="fade-in">
+                <h3>Simulação Gratuita</h3>
+                <p class="form-sub">Preencha para receber uma análise personalizada.</p>
+                <form id="leadForm" onsubmit="handleForm(event)">
+                    <div class="input-group">
+                        <label>Nome Completo</label>
+                        <input type="text" name="name" placeholder="Digite seu nome" required>
+                    </div>
+                    <div class="input-group">
+                        <label>E-mail (Para receber a proposta)</label>
+                        <input type="email" name="email" placeholder="seu@email.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label>WhatsApp (Com DDD)</label>
+                        <input type="tel" name="phone" id="phone" placeholder="(00) 90000-0000" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Qual o seu objetivo?</label>
+                        <select name="product">
+                            <option value="Imóvel">🏡 Imóvel</option>
+                            <option value="Veículo">🚗 Automóvel ou Moto</option>
+                            <option value="Pesados">🚛 Caminhão ou Máquinas</option>
+                            <option value="Serviços">✈️ Serviços (Cirurgia, Viagem)</option>
+                            <option value="Investimento">💰 Investimento</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Valor do Crédito Desejado</label>
+                        <div class="input-wrapper">
+                            <span class="currency-symbol">R$</span>
+                            <input type="tel" id="valor_visual" class="input-currency" placeholder="0,00"
+                                oninput="formatarMoeda(this)" required>
+                            <input type="hidden" name="value" id="credit_value_hidden">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit" id="btn-enviar">Solicitar Análise</button>
+                </form>
+            </div>
+            <div id="sucesso-msg" style="display:none; text-align:center; padding:30px 10px;" class="fade-in">
+                <div style="font-size:60px; color:#27ae60; margin-bottom:15px;">✅</div>
+                <h3 style="color:#333;">Solicitação Recebida!</h3>
+                <p
+                    style="color: #ff0000; font-weight: 900; font-size: 15px; text-align: center; margin-top: 10px; text-transform: uppercase;">
+                    Clique no botão abaixo para receber sua simulação agora mesmo!
+                </p>
+
+                <a id="btn-whats-direto" href="#" target="_blank" class="btn-whatsapp-pos">
+                    <i class="fab fa-whatsapp" style="font-size: 22px;"></i> Falar com Jefferson Reis
+                </a>
+
+                <button onclick="novaSimulacao()" class="btn-voltar">Fazer Nova Simulação</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="sobre">
+        <div class="sobre-img">
+            <img src="img/jefferson.jpg" alt="Jefferson Reis"
+                onerror="this.src='https://via.placeholder.com/500x500/111/fff?text=FOTO+JEFFERSON'">
+        </div>
+        <div class="sobre-content">
+            <span class="section-tag">Quem é Jefferson Reis?</span>
+            <h2 class="section-title">9 anos de experiência no Mercado Financeiro</h2>
+            <p>Meu nome é <strong>Jefferson Reis</strong>, sou empreendedor há 18 anos. Nos últimos 9 anos venho atuando
+                fortemente no mercado financeiro para desenhar estratégias que realmente funcionam para quem quer
+                comprar bens sem pagar juros abusivos.</p>
+            <br>
+            <p>Ajudei centenas de famílias a realizarem seus sonhos. Nos últimos 8 anos foram mais de <strong>80 milhões
+                    em sonhos realizados</strong> através de nossas modalidades de crédito.</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-num">+80 Mi</span>
+                    <span class="stat-desc">Em sonhos realizados</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">+1000</span>
+                    <span class="stat-desc">Famílias Impactadas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="beneficios">
+        <h2 class="section-title" style="color:var(--dark); font-size: 30px;">Por que fazer com a Reis?</h2>
+        <p>Centenas de famílias são impactadas por essa nova modalidade de crédito.</p>
+        <div class="grid-beneficios">
+            <div class="card-ben">
+                <h3>🌍 Atendimento Nacional</h3>
+                <p>Atendemos em todo o Brasil de forma 100% digital e segura.</p>
+            </div>
+            <div class="card-ben">
+                <h3>📉 Taxas Especiais</h3>
+                <p>Acesso a créditos exclusivos com condições que você não acha no banco.</p>
+            </div>
+            <div class="card-ben">
+                <h3>🤝 Consultoria Real</h3>
+                <p>Acompanhamos você do início até a contemplação e entrega do bem.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="seguranca-final">
+        <div class="seguranca-container">
+            <div class="seguranca-item">
+                <span style="color:#C8102E; font-size:20px;">🛡️</span>
+                <span>Site 100% Seguro</span>
+            </div>
+            <div class="seguranca-item">
+                <span style="color:#C8102E; font-size:20px;">🔒</span>
+                <span>Criptografia SSL 256-bit</span>
+            </div>
+            <div class="seguranca-item">
+                <span style="color:#C8102E; font-size:20px;">✅</span>
+                <span>Dados Protegidos (LGPD)</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-info">
+            <div class="social-links">
+                <a href="https://www.instagram.com/reis.jeffersonreis" target="_blank" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/share/1FahqzhuGR/?mibextid=wwXIfr" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://youtube.com/@reisconsultoriaefinanceira1156?si=GOjjIZc281JGM7qY" target="_blank"
+                    title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.tiktok.com/@reis.jeffersonreis?_t=ZM-8up0jftTm3L&_r=1" target="_blank"
+                    title="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+            <strong>REIS CONSULTORIA FINANCEIRA - 46.031.904/0001-85</strong>
+            <br>Rua Alfredo Feitosa, n 30, Cidade Nobre, Ipatinga, MG | CEP 35162-354<br>
+            E-MAIL: REISCONSULTORIAFINANCEIRALTDA@GMAIL.COM
+            <span class="footer-contact">JEFFERSON FERREIRA REIS - CONSULTOR</span>
+        </div>
+        &copy; 2025 Reis Consultoria Financeira. Todos os direitos reservados.
+    </footer>
+
+    <script>
+        // MUDANÇA PROFISSIONAL: Link direto para o Webhook com o ID do seu pai
+        const WEBHOOK_URL = "https://consorcio-hub-api.onrender.com/api/v1/webhook/1";
+
+        function formatarMoeda(elemento) {
+            let valor = elemento.value.replace(/\D/g, "");
+            if (valor === "") {
+                elemento.value = "";
+                document.getElementById('credit_value_hidden').value = "";
+                return;
+            }
+            let valorNumerico = parseFloat(valor) / 100;
+            elemento.value = valorNumerico.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('credit_value_hidden').value = valorNumerico.toFixed(2);
+        }
+
+        document.getElementById('phone').addEventListener('input', function (e) {
+            var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
+
+        function novaSimulacao() {
+            document.getElementById('form-container-div').style.display = 'block';
+            document.getElementById('sucesso-msg').style.display = 'none';
+            document.getElementById('leadForm').reset();
+            document.getElementById('btn-enviar').disabled = false;
+            document.getElementById('btn-enviar').innerText = "Solicitar Análise";
+        }
+
+        async function handleForm(event) {
+            event.preventDefault();
+            const btn = document.getElementById('btn-enviar');
+            const hiddenVal = document.getElementById('credit_value_hidden').value;
+
+            if (!hiddenVal || parseFloat(hiddenVal) <= 0) {
+                alert("Por favor, preencha o valor do crédito desejado.");
+                return;
+            }
+
+            btn.innerText = "ENVIANDO...";
+            btn.disabled = true;
+
+            const formData = new FormData(document.getElementById('leadForm'));
+            const formProps = Object.fromEntries(formData.entries());
+
+            // Mapeia os campos do formulário para os campos que o seu api.js espera
+            const dadosParaEnviar = {
+                name: formProps.name,
+                phone: formProps.phone,
+                email: formProps.email,
+                produto_interesse: formProps.product,
+                valor_estimado: parseFloat(hiddenVal),
+                usuario_id: 1 // ID do seu pai no sistema
+            };
+
+            try {
+                // CHAMA A FUNÇÃO DO SEU api.js
+                await enviarLeadParaCRM(dadosParaEnviar);
+
+                // Sucesso: Configura o Whats e mostra msg
+                const numPai = "5531995246410";
+                const msg = encodeURIComponent(`Olá Jefferson, acabei de fazer uma simulação no site!`);
+                document.getElementById('btn-whats-direto').href = `https://wa.me/${numPai}?text=${msg}`;
+
+                document.getElementById('form-container-div').style.display = 'none';
+                document.getElementById('sucesso-msg').style.display = 'block';
+            } catch (error) {
+                alert("Erro ao enviar: " + error.message);
+                btn.innerText = "Solicitar Análise";
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+
+</html>
