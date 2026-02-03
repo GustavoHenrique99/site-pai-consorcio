@@ -758,17 +758,21 @@
             btn.innerText = "ENVIANDO...";
             btn.disabled = true;
 
+            // Dentro da handleForm(event) no seu index.html:
             const formData = new FormData(document.getElementById('leadForm'));
             const formProps = Object.fromEntries(formData.entries());
 
-            // Mapeia os campos do formulário para os campos que o seu api.js espera
+            // FORÇA A CAPTURA DO VALOR DO SELECT
+            const selectProduto = document.querySelector('select[name="product"]');
+            const produtoSelecionado = selectProduto.options[selectProduto.selectedIndex].value;
+
             const dadosParaEnviar = {
                 name: formProps.name,
                 phone: formProps.phone,
                 email: formProps.email,
-                produto_interesse: formProps.product,
+                produto_interesse: produtoSelecionado, // Agora pegando o valor real do select
                 valor_estimado: parseFloat(hiddenVal),
-                usuario_id: 1 // ID do seu pai no sistema
+                usuario_id: 1
             };
 
             try {
