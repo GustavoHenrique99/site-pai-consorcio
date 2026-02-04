@@ -21,7 +21,7 @@ async function enviarLeadParaCRM(dados) {
             credit_value: dados.valor_estimado || 0,
 
             // CRÍTICO: Identifica qual usuário do SaaS receberá este lead no Dashboard
-            usuario_id: dados.usuario_id || 1 
+            usuario_id: dados.usuario_id || 2 
         };
 
         const response = await fetch(`${API_URL}/api/public/leads`, {
