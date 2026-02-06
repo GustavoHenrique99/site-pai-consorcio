@@ -853,42 +853,51 @@
             btn.innerText = "ENVIANDO...";
             btn.disabled = true;
 
-            // Dentro da handleForm(event) no seu index.html:
             const formData = new FormData(document.getElementById('leadForm'));
             const formProps = Object.fromEntries(formData.entries());
 
-            // FORÇA A CAPTURA DO VALOR DO SELECT
+            // Captura do produto selecionado
             const selectProduto = document.querySelector('select[name="product"]');
             const produtoSelecionado = selectProduto.options[selectProduto.selectedIndex].value;
 
             const dadosParaEnviar = {
                 name: formProps.name,
                 phone: formProps.phone,
-                email: formProps.email, // Campo principal
+                email: formProps.email,
                 produto_interesse: produtoSelecionado,
                 valor_estimado: parseFloat(hiddenVal),
                 usuario_id: 2,
-                // Garante que o e-mail vá como um dado extra caso o backend não mapeie o principal
                 dados_adicionais: {
-                    email: formProps.email
+                    email: formProps.email,
+                    origem: "Site Oficial"
                 }
             };
-            console.log("DADOS QUE SERÃO ENVIADOS:", dadosParaEnviar);
+
             try {
+                // 1. Envia para o seu CRM (Sincronização feita hoje!)
                 await enviarLeadParaCRM(dadosParaEnviar);
 
+                // 2. Evento para o Anúncio do Facebook (Objetivo Vendas)
                 fbq('track', 'AddToCart', {
-                    content_name: 'Simulação Site',
-                    value: parseFloat(hiddenVal), // Envia o valor do consórcio para o Facebook
+                    content_name: 'Simulação ' + produtoSelecionado,
+                    content_category: produtoSelecionado,
+                    value: parseFloat(hiddenVal),
                     currency: 'BRL'
                 });
 
+                // 3. Prepara o link do WhatsApp do seu pai
                 const numPai = "5531995246410";
-                const msg = encodeURIComponent(`Vim através do site!`);
+                const msg = encodeURIComponent(`Olá Jefferson, acabei de fazer uma simulação de ${produtoSelecionado} no valor de R$ ${parseFloat(hiddenVal).toLocaleString('pt-BR')} no seu site. Gostaria de receber a proposta!`);
                 document.getElementById('btn-whats-direto').href = `https://wa.me/${numPai}?text=${msg}`;
 
+                // 4. Troca de visualização (Esconde formulário e mostra sucesso)
+                const containerSucesso = document.getElementById('sucesso-msg');
                 document.getElementById('form-container-div').style.display = 'none';
-                document.getElementById('sucesso-msg').style.display = 'block';
+                containerSucesso.style.display = 'block';
+
+                // --- CORREÇÃO PEDIDA PELO PAI: Rola a tela para o botão de sucesso ---
+                containerSucesso.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
             } catch (error) {
                 alert("Erro ao enviar: " + error.message);
                 btn.innerText = "Solicitar Análise";
