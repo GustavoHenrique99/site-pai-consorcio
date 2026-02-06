@@ -7,29 +7,22 @@ const API_URL = "https://consorcio-hub-api.onrender.com";
  */
 async function enviarLeadParaCRM(dados) {
     try {
-        // Mapeamento Inteligente: Transforma dados amigáveis do Site em campos do Banco de Dados
-        // No seu api.js, force o envio assim:
         const payload = {
             cliente_nome: dados.name,
             cliente_whats: dados.phone,
+            cliente_email: dados.email, // <--- Envie como cliente_email
             usuario_id: dados.usuario_id,
             tipo_credito: dados.produto_interesse,
             valor_credito: dados.valor_estimado,
-            // FOCO AQUI: O servidor ignora o 'cliente_email' solto, então mandamos aqui:
-            dados_adicionais: {
-                email: dados.email,
-                identificador_reserva: "backup_email"
-            }
+            dados_adicionais: { email: dados.email } // Backup
         };
 
-        // Rota correta do seu backend para simulações
         const response = await fetch(`${API_URL}/simular/`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
         });
+        // ... resto do código
 
         if (!response.ok) {
             const errorData = await response.json();
