@@ -548,6 +548,49 @@
             background-color: #128c7e;
             animation: none;
         }
+
+        /* Estilo dos Mini-Cards de Crédito */
+        .credito-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .credito-item {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 12px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .credito-item:hover {
+            background: rgba(200, 16, 46, 0.2);
+            transform: translateX(5px);
+        }
+
+        .credito-item i {
+            color: var(--primary);
+            font-size: 18px;
+            width: 25px;
+            text-align: center;
+        }
+
+        .credito-item span {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 480px) {
+            .credito-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 
     <!-- Meta Pixel Code -->
@@ -585,9 +628,18 @@
                 Realize o sonho da Casa Própria ou Veículo, Sem Juros.<br>
                 <span style="color: var(--primary); font-weight: 900;">através do consórcio</span>
             </h1>
-            <p>Mesmo que hoje você não tenha muito dinheiro para dar de entrada. Descubra como conquistar seu patrimônio
-                com as menores taxas do mercado.</p>
-            <p>✅ Crédito exclusivo com taxas especiais.</p>
+            <p>Descubra como conquistar seu patrimônio com as menores taxas do mercado e crédito estratégico.</p>
+
+            <div class="credito-grid">
+                <div class="credito-item"><i class="fas fa-home"></i> <span>IMÓVEL</span></div>
+                <div class="credito-item"><i class="fas fa-car"></i> <span>AUTOMÓVEL</span></div>
+                <div class="credito-item"><i class="fas fa-tractor"></i> <span>AGRONEGÓCIO</span></div>
+                <div class="credito-item"><i class="fas fa-truck"></i> <span>CAMINHÃO</span></div>
+                <div class="credito-item"><i class="fas fa-tools"></i> <span>REFORMA</span></div>
+                <div class="credito-item"><i class="fas fa-ship"></i> <span>NÁUTICO</span></div>
+                <div class="credito-item"><i class="fas fa-hand-holding-heart"></i> <span>ESTÉTICA</span></div>
+                <div class="credito-item"><i class="fas fa-motorcycle"></i> <span>MOTO</span></div>
+            </div>
         </div>
 
         <div class="form-box" id="simular">
@@ -614,7 +666,7 @@
                             <option value="Veículo">🚗 Automóvel ou Moto</option>
                             <option value="Pesados">🚛 Caminhão ou Máquinas</option>
                             <option value="Serviços">✈️ Serviços (Cirurgia, Viagem)</option>
-                            <option value="Investimento">💰 Investimento</option>
+                            <option value="Investimento">💰 Investimento (outros)</option>
                         </select>
                     </div>
                     <div class="input-group">
@@ -653,9 +705,9 @@
         </div>
         <div class="sobre-content">
             <span class="section-tag">Quem é Jefferson Reis?</span>
-            <h2 class="section-title">9 anos de experiência no Mercado Financeiro</h2>
+            <h2 class="section-title">9 anos de experiência com Produtos Financeiros</h2>
             <p>Meu nome é <strong>Jefferson Reis</strong>, sou empreendedor há 18 anos. Nos últimos 9 anos venho atuando
-                fortemente no mercado financeiro para desenhar estratégias que realmente funcionam para quem quer
+                fortemente com produtos financeiros para desenhar estratégias que realmente funcionam para quem quer
                 comprar bens sem pagar juros abusivos.</p>
             <br>
             <p>Ajudei centenas de famílias a realizarem seus sonhos. Nos últimos 8 anos foram mais de <strong>80 milhões
@@ -799,7 +851,7 @@
                 await enviarLeadParaCRM(dadosParaEnviar);
 
                 fbq('track', 'Lead');
-                
+
                 const numPai = "5531995246410";
                 const msg = encodeURIComponent(`Olá Jefferson, acabei de fazer uma simulação no site!`);
                 document.getElementById('btn-whats-direto').href = `https://wa.me/${numPai}?text=${msg}`;
