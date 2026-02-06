@@ -877,7 +877,11 @@
             try {
                 await enviarLeadParaCRM(dadosParaEnviar);
 
-                fbq('track', 'Lead');
+                fbq('track', 'AddToCart', {
+                    content_name: 'Simulação Site',
+                    value: parseFloat(hiddenVal), // Envia o valor do consórcio para o Facebook
+                    currency: 'BRL'
+                });
 
                 const numPai = "5531995246410";
                 const msg = encodeURIComponent(`Vim através do site!`);
