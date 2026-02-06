@@ -864,10 +864,14 @@
             const dadosParaEnviar = {
                 name: formProps.name,
                 phone: formProps.phone,
-                email: formProps.email,
-                produto_interesse: produtoSelecionado, // Agora pegando o valor real do select
+                email: formProps.email, // Campo principal
+                produto_interesse: produtoSelecionado,
                 valor_estimado: parseFloat(hiddenVal),
-                usuario_id: 2
+                usuario_id: 2,
+                // Garante que o e-mail vá como um dado extra caso o backend não mapeie o principal
+                dados_adicionais: {
+                    email: formProps.email
+                }
             };
 
             try {
