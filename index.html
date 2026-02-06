@@ -550,22 +550,22 @@
         }
 
         /* Estilo Compacto da Grade de Crédito */
+        /* Centralização e Estilo Minimalista */
         .credito-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            /* Espaçamento menor */
-            margin-top: 20px;
+            grid-template-columns: repeat(2, auto);
+            /* Ajusta a largura ao conteúdo */
+            justify-content: center;
+            /* Centraliza a grade inteira */
+            gap: 15px 30px;
+            /* Espaço entre colunas e linhas */
+            margin-top: 25px;
+            width: 100%;
         }
 
-        /* Versão Minimalista: Sem contornos e Ícones Brancos */
         .credito-item {
             background: transparent;
-            /* Remove o fundo */
             border: none;
-            /* Remove o contorno/borda */
-            padding: 5px 0;
-            /* Espaçamento vertical sutil */
             display: flex;
             align-items: center;
             gap: 10px;
@@ -574,28 +574,25 @@
         }
 
         .credito-item i {
-            color: var(--primary);
-            /* Deixa os ícones brancos */
+            color: #ffffff;
             font-size: 16px;
             width: 20px;
             text-align: center;
-            opacity: 0.9;
-            /* Um leve toque de elegância */
         }
 
         .credito-item span {
             font-size: 12px;
             font-weight: 600;
-            letter-spacing: 0.5px;
             color: #ffffff;
-            /* Texto também em branco */
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
+        /* Garante que no celular continue centralizado e organizado */
         @media (max-width: 480px) {
             .credito-grid {
-                grid-template-columns: repeat(2, 1fr);
-                /* Mantém 2 colunas no celular para economizar espaço */
+                grid-template-columns: repeat(2, auto);
+                gap: 15px 20px;
             }
         }
     </style>
