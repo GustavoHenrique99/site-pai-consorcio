@@ -892,11 +892,19 @@
 
                 // 4. Troca de visualização (Esconde formulário e mostra sucesso)
                 const containerSucesso = document.getElementById('sucesso-msg');
-                document.getElementById('form-container-div').style.display = 'none';
+                const formDiv = document.getElementById('form-container-div');
+                
+                formDiv.style.display = 'none';
                 containerSucesso.style.display = 'block';
 
-                // --- CORREÇÃO PEDIDA PELO PAI: Rola a tela para o botão de sucesso ---
-                containerSucesso.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // --- CORREÇÃO FINAL: Garante que a tela suba e centralize ---
+                // O setTimeout de 100ms garante que o navegador calcule o novo tamanho da página antes de rolar
+                setTimeout(() => {
+                    containerSucesso.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
+                }, 100);
 
             } catch (error) {
                 alert("Erro ao enviar: " + error.message);
