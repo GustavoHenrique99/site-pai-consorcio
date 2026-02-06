@@ -486,25 +486,38 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 15px;
             margin-bottom: 30px;
         }
 
         .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            /* Fundo sutil */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            /* Contorno discreto */
             color: white;
-            /* Cor do ícone */
-            font-size: 28px;
-            /* Tamanho do ícone */
+            border-radius: 50%;
+            /* Formato circular */
+            font-size: 20px;
             text-decoration: none;
             transition: all 0.3s ease;
-            opacity: 0.7;
         }
 
+        /* Efeito ao passar o mouse (Hover) */
         .social-links a:hover {
-            color: var(--primary);
-            /* Fica vermelho ao passar o mouse */
-            opacity: 1;
+            background: var(--primary);
+            /* Fica vermelho Reis */
+            border-color: var(--primary);
+            color: white;
             transform: translateY(-5px);
+            /* Sobe um pouquinho */
+            box-shadow: 0 5px 15px rgba(200, 16, 46, 0.4);
+            /* Brilho vermelho */
         }
 
         /* BOTÃO WHATSAPP COM EFEITO DE PULSO */
@@ -549,26 +562,23 @@
             animation: none;
         }
 
-        /* Estilo Compacto da Grade de Crédito */
-        /* Centralização e Estilo Minimalista */
         .credito-grid {
             display: grid;
-            grid-template-columns: repeat(2, auto);
-            /* Ajusta a largura ao conteúdo */
-            justify-content: center;
-            /* Centraliza a grade inteira */
-            gap: 15px 30px;
-            /* Espaço entre colunas e linhas */
-            margin-top: 25px;
-            width: 100%;
+            /* No PC: 2 colunas que se ajustam ao tamanho do texto */
+            grid-template-columns: repeat(2, max-content);
+            gap: 12px 40px;
+            /* 12px entre linhas, 40px entre colunas */
+            margin-top: 30px;
+            justify-content: flex-start;
+            /* Alinha com o texto principal no PC */
         }
 
         .credito-item {
-            background: transparent;
-            border: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            background: transparent;
+            border: none;
             cursor: default;
             pointer-events: none;
         }
@@ -581,18 +591,27 @@
         }
 
         .credito-item span {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
             color: #ffffff;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
         }
 
-        /* Garante que no celular continue centralizado e organizado */
-        @media (max-width: 480px) {
+        /* Ajuste específico para Celular */
+        @media (max-width: 768px) {
             .credito-grid {
-                grid-template-columns: repeat(2, auto);
-                gap: 15px 20px;
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 colunas iguais no celular */
+                justify-content: center;
+                /* Centraliza no mobile */
+                gap: 15px 10px;
+            }
+
+            .credito-item {
+                justify-content: flex-start;
+                padding-left: 10%;
+                /* Pequeno recuo para não colar na borda */
             }
         }
     </style>
