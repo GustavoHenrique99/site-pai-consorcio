@@ -549,46 +549,52 @@
             animation: none;
         }
 
-        /* Estilo dos Mini-Cards de Crédito */
+        /* Estilo Compacto da Grade de Crédito */
         .credito-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 25px;
+            gap: 8px;
+            /* Espaçamento menor */
+            margin-top: 20px;
         }
 
         .credito-item {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 12px;
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            /* Reduzi o padding vertical */
+            border-radius: 6px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            transition: 0.3s;
+            gap: 8px;
+            transition: 0.2s;
         }
 
         .credito-item:hover {
-            background: rgba(200, 16, 46, 0.2);
-            transform: translateX(5px);
+            background: rgba(200, 16, 46, 0.15);
+            border-color: var(--primary);
         }
 
         .credito-item i {
             color: var(--primary);
-            font-size: 18px;
-            width: 25px;
+            font-size: 14px;
+            /* Ícone menor */
+            width: 20px;
             text-align: center;
         }
 
         .credito-item span {
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            font-size: 11px;
+            /* Texto menor e mais elegante */
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         @media (max-width: 480px) {
             .credito-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                /* Mantém 2 colunas no celular para economizar espaço */
             }
         }
     </style>
@@ -628,7 +634,7 @@
                 Realize o sonho da Casa Própria ou Veículo, Sem Juros.<br>
                 <span style="color: var(--primary); font-weight: 900;">através do consórcio</span>
             </h1>
-            <p>Descubra como conquistar seu patrimônio com as menores taxas do mercado e crédito estratégico.</p>
+            <p>Descubra como conquistar seu patrimônio com as menores taxas do mercado.</p>
 
             <div class="credito-grid">
                 <div class="credito-item"><i class="fas fa-home"></i> <span>IMÓVEL</span></div>
