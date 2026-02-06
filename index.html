@@ -562,18 +562,19 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 8px 12px;
-            /* Reduzi o padding vertical */
             border-radius: 6px;
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: 0.2s;
+            /* Mudanças cruciais abaixo */
+            cursor: default;
+            /* Remove a 'mãozinha' de clique */
+            pointer-events: none;
+            /* Impede qualquer interação de clique */
+            user-select: none;
+            /* Impede selecionar o texto sem querer */
         }
 
-        .credito-item:hover {
-            background: rgba(200, 16, 46, 0.15);
-            border-color: var(--primary);
-        }
 
         .credito-item i {
             color: var(--primary);
@@ -595,6 +596,24 @@
             .credito-grid {
                 grid-template-columns: repeat(2, 1fr);
                 /* Mantém 2 colunas no celular para economizar espaço */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 26px !important;
+                /* Diminui o título no celular */
+                margin-bottom: 10px;
+            }
+
+            .hero p {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+
+            .credito-grid {
+                margin-top: 15px;
+                margin-bottom: 20px;
             }
         }
     </style>
