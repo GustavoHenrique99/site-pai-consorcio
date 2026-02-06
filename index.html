@@ -558,38 +558,38 @@
             margin-top: 20px;
         }
 
+        /* Versão Minimalista: Sem contornos e Ícones Brancos */
         .credito-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 8px 12px;
-            border-radius: 6px;
+            background: transparent;
+            /* Remove o fundo */
+            border: none;
+            /* Remove o contorno/borda */
+            padding: 5px 0;
+            /* Espaçamento vertical sutil */
             display: flex;
             align-items: center;
-            gap: 8px;
-            /* Mudanças cruciais abaixo */
+            gap: 10px;
             cursor: default;
-            /* Remove a 'mãozinha' de clique */
             pointer-events: none;
-            /* Impede qualquer interação de clique */
-            user-select: none;
-            /* Impede selecionar o texto sem querer */
         }
 
-
         .credito-item i {
-            color: var(--primary);
-            font-size: 14px;
-            /* Ícone menor */
+            color: #ffffff;
+            /* Deixa os ícones brancos */
+            font-size: 16px;
             width: 20px;
             text-align: center;
+            opacity: 0.9;
+            /* Um leve toque de elegância */
         }
 
         .credito-item span {
-            font-size: 11px;
-            /* Texto menor e mais elegante */
-            font-weight: 700;
-            letter-spacing: 0.3px;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            /* Texto também em branco */
+            text-transform: uppercase;
         }
 
         @media (max-width: 480px) {
@@ -598,7 +598,6 @@
                 /* Mantém 2 colunas no celular para economizar espaço */
             }
         }
-
     </style>
 
     <!-- Meta Pixel Code -->
