@@ -549,6 +549,26 @@
             animation: none;
         }
     </style>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '879458164978443');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=879458164978443&ev=PageView&noscript=1" /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 
 <body>
@@ -776,10 +796,10 @@
             };
 
             try {
-                // CHAMA A FUNÇÃO DO SEU api.js
                 await enviarLeadParaCRM(dadosParaEnviar);
 
-                // Sucesso: Configura o Whats e mostra msg
+                fbq('track', 'Lead');
+                
                 const numPai = "5531995246410";
                 const msg = encodeURIComponent(`Olá Jefferson, acabei de fazer uma simulação no site!`);
                 document.getElementById('btn-whats-direto').href = `https://wa.me/${numPai}?text=${msg}`;
