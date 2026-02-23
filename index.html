@@ -884,9 +884,11 @@
                     currency: 'BRL'
                 });
 
-                // 3. Prepara o link do WhatsApp do seu pai
+                // 3. Prepara o link do WhatsApp com o formato exato solicitado
                 const numPai = "5531995246410";
-                const msg = encodeURIComponent(`Vim através do site!`);
+                const msgWhatsApp = `Vim através do site! (${produtoSelecionado.toLowerCase()})`;
+                
+                const msg = encodeURIComponent(msgWhatsApp);
                 document.getElementById('btn-whats-direto').href = `https://wa.me/${numPai}?text=${msg}`;
 
                 // 4. Troca de visualização (Esconde formulário e mostra sucesso)
