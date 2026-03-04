@@ -616,7 +616,6 @@
         }
     </style>
 
-    <!-- Meta Pixel Code -->
     <script>
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
@@ -634,8 +633,7 @@
     </script>
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=879458164978443&ev=PageView&noscript=1" /></noscript>
-    <!-- End Meta Pixel Code -->
-</head>
+    </head>
 
 <body>
 
@@ -812,7 +810,6 @@
 
     <script src="js/api.js"></script>
     <script>
-        // MUDANÇA PROFISSIONAL: Link direto para o Webhook com o ID do seu pai
         const WEBHOOK_URL = "https://consorcio-hub-api.onrender.com/api/v1/webhook/2";
 
         function formatarMoeda(elemento) {
@@ -856,7 +853,6 @@
             const formData = new FormData(document.getElementById('leadForm'));
             const formProps = Object.fromEntries(formData.entries());
 
-            // Captura do produto selecionado
             const selectProduto = document.querySelector('select[name="product"]');
             const produtoSelecionado = selectProduto.options[selectProduto.selectedIndex].value;
 
@@ -874,32 +870,35 @@
             };
 
             try {
-                // 1. Envia para o seu CRM (Sincronização feita hoje!)
                 await enviarLeadParaCRM(dadosParaEnviar);
 
-
+                // --- AJUSTE PARA O GERENCIADOR DE ANÚNCIOS ---
+                // Enviamos o evento com a categoria para o Facebook conseguir separar
                 fbq('track', 'Lead', {
+                    content_category: produtoSelecionado, 
                     content_name: 'Simulação ' + produtoSelecionado,
                     value: parseFloat(hiddenVal),
                     currency: 'BRL'
                 });
 
-                // 3. Prepara o link do WhatsApp com o formato exato solicitado
+                // Disparamos um evento customizado específico para facilitar a criação de colunas
+                if (produtoSelecionado === 'Imóvel') {
+                    fbq('trackCustom', 'LeadImovel');
+                } else if (produtoSelecionado === 'Veículo') {
+                    fbq('trackCustom', 'LeadVeiculo');
+                }
+
                 const numPai = "5531995246410";
                 const msgWhatsApp = `Vim através do site! (${produtoSelecionado.toLowerCase()})`;
-                
                 const msg = encodeURIComponent(msgWhatsApp);
                 document.getElementById('btn-whats-direto').href = `https://wa.me/${numPai}?text=${msg}`;
 
-                // 4. Troca de visualização (Esconde formulário e mostra sucesso)
                 const containerSucesso = document.getElementById('sucesso-msg');
                 const formDiv = document.getElementById('form-container-div');
 
                 formDiv.style.display = 'none';
                 containerSucesso.style.display = 'block';
 
-                // --- CORREÇÃO FINAL: Garante que a tela suba e centralize ---
-                // O setTimeout de 100ms garante que o navegador calcule o novo tamanho da página antes de rolar
                 setTimeout(() => {
                     containerSucesso.scrollIntoView({
                         behavior: 'smooth',
