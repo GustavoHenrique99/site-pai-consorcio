@@ -911,6 +911,17 @@
                 btn.disabled = false;
             }
         }
+
+        // INSERÇÃO CIRÚRGICA: Novo evento rastreando o clique no botão do WhatsApp
+        document.getElementById('btn-whats-direto').addEventListener('click', function() {
+            const selectProduto = document.querySelector('select[name="product"]');
+            const produtoSelecionado = selectProduto.options[selectProduto.selectedIndex].value;
+
+            // Dispara o evento 'CliqueWhatsApp' para o Pixel, incluindo o produto que foi preenchido
+            fbq('trackCustom', 'CliqueWhatsApp', {
+                content_name: 'WhatsApp ' + produtoSelecionado
+            });
+        });
     </script>
 </body>
 

@@ -726,7 +726,7 @@
         </div>
         <div class="sobre-content">
             <span class="section-tag">Quem é Jefferson Reis?</span>
-            <h2 class="section-title">9 anos de experiência com Produtos Financeiros</h2>
+            <h2 class="section-title">9 anos de experience com Produtos Financeiros</h2>
             <p>Meu nome é <strong>Jefferson Reis</strong>, sou empreendedor há 18 anos. Nos últimos 9 anos venho atuando
                 fortemente com produtos financeiros para desenhar estratégias que realmente funcionam para quem quer
                 comprar bens sem pagar juros abusivos.</p>
@@ -911,6 +911,17 @@
                 btn.disabled = false;
             }
         }
+
+        // INSERÇÃO CIRÚRGICA: Novo evento rastreando o clique no botão do WhatsApp
+        document.getElementById('btn-whats-direto').addEventListener('click', function() {
+            const selectProduto = document.querySelector('select[name="product"]');
+            const produtoSelecionado = selectProduto.options[selectProduto.selectedIndex].value;
+
+            // Dispara o evento 'CliqueWhatsApp' para o Pixel, incluindo o produto que foi preenchido
+            fbq('trackCustom', 'CliqueWhatsApp', {
+                content_name: 'WhatsApp ' + produtoSelecionado
+            });
+        });
     </script>
 </body>
 

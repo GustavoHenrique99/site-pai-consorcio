@@ -616,7 +616,6 @@
         }
     </style>
 
-    <!-- Meta Pixel Code -->
     <script>
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
@@ -634,8 +633,7 @@
     </script>
     <noscript><img height="1" width="1" style="display:none"
             src="https://www.facebook.com/tr?id=879458164978443&ev=PageView&noscript=1" /></noscript>
-    <!-- End Meta Pixel Code -->
-</head>
+    </head>
 
 <body>
 
@@ -913,6 +911,17 @@
                 btn.disabled = false;
             }
         }
+
+        // INSERÇÃO CIRÚRGICA: Novo evento rastreando o clique no botão do WhatsApp
+        document.getElementById('btn-whats-direto').addEventListener('click', function() {
+            const selectProduto = document.querySelector('select[name="product"]');
+            const produtoSelecionado = selectProduto.options[selectProduto.selectedIndex].value;
+
+            // Dispara o evento 'CliqueWhatsApp' para o Pixel, incluindo o produto que foi preenchido
+            fbq('trackCustom', 'CliqueWhatsApp', {
+                content_name: 'WhatsApp ' + produtoSelecionado
+            });
+        });
     </script>
 </body>
 
