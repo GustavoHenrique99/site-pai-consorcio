@@ -12,8 +12,11 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" 
+        media="print" onload="this.media='all'">
+    
     <style>
         :root {
             --primary: #C8102E;
@@ -688,7 +691,7 @@
                             <input type="hidden" name="value" id="credit_value_hidden">
                         </div>
                     </div>
-                    <button type="submit" class="btn-submit" id="btn-enviar">Solicitar Análise</button>
+                    <button type="submit" class="btn-submit" id="btn-enviar" aria-label="Enviar formulário para simulação">Solicitar Análise</button>
                 </form>
             </div>
             <div id="sucesso-msg" style="display:none; text-align:center; padding:30px 10px;" class="fade-in">
@@ -699,7 +702,7 @@
                     Clique no botão abaixo para receber sua simulação agora mesmo!
                 </p>
 
-                <a id="btn-whats-direto" href="#" target="_blank" class="btn-whatsapp-pos">
+                <a id="btn-whats-direto" href="#" target="_blank" class="btn-whatsapp-pos" aria-label="Falar com Jefferson Reis no WhatsApp">
                     <i class="fab fa-whatsapp" style="font-size: 22px;" aria-hidden="true"></i> Falar com Jefferson Reis
                 </a>
 
@@ -710,7 +713,7 @@
 
     <section class="sobre">
         <div class="sobre-img">
-            <img src="../img/jefferson.jpg" alt="Jefferson Reis"
+            <img src="../img/jefferson.jpg" alt="Jefferson Reis" loading="lazy"
                 onerror="this.src='https://via.placeholder.com/500x500/111/fff?text=FOTO+JEFFERSON'">
         </div>
         <div class="sobre-content">
@@ -774,18 +777,18 @@
     <footer>
         <div class="footer-info">
             <div class="social-links">
-                <a href="https://www.instagram.com/reis.jeffersonreis" target="_blank" title="Instagram" aria-label="Acessar Instagram">
+                <a href="https://www.instagram.com/reis.jeffersonreis" target="_blank" title="Instagram" aria-label="Visite nosso Instagram">
                     <i class="fab fa-instagram" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.facebook.com/share/1FahqzhuGR/?mibextid=wwXIfr" target="_blank" title="Facebook" aria-label="Acessar Facebook">
+                <a href="https://www.facebook.com/share/1FahqzhuGR/?mibextid=wwXIfr" target="_blank" title="Facebook" aria-label="Visite nosso Facebook">
                     <i class="fab fa-facebook-f" aria-hidden="true"></i>
                 </a>
                 <a href="https://youtube.com/@reisconsultoriaefinanceira1156?si=GOjjIZc281JGM7qY" target="_blank"
-                    title="YouTube" aria-label="Acessar Canal do YouTube">
+                    title="YouTube" aria-label="Visite nosso Canal no YouTube">
                     <i class="fab fa-youtube" aria-hidden="true"></i>
                 </a>
                 <a href="https://www.tiktok.com/@reis.jeffersonreis?_t=ZM-8up0jftTm3L&_r=1" target="_blank"
-                    title="TikTok" aria-label="Acessar TikTok">
+                    title="TikTok" aria-label="Visite nosso TikTok">
                     <i class="fab fa-tiktok" aria-hidden="true"></i>
                 </a>
             </div>

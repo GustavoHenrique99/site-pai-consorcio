@@ -10,10 +10,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <link rel="preload" href="../img/logo.png" as="image">
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+
     <style>
         :root {
             --primary: #C8102E;
@@ -154,6 +159,7 @@
             /* Truque para subir o bloco em relação ao texto */
         }
 
+        /* INSERÇÃO CIRÚRGICA: h3 alterado para h2 por questões de Acessibilidade */
         .form-box h2 {
             text-align: center;
             color: var(--dark);
@@ -165,6 +171,7 @@
 
         .form-sub {
             text-align: center;
+            /* INSERÇÃO CIRÚRGICA: Cor ajustada para #444 para passar no contraste */
             color: #444;
             font-size: 13px;
             margin-bottom: 20px;
@@ -686,18 +693,18 @@
                             <input type="hidden" name="value" id="credit_value_hidden">
                         </div>
                     </div>
-                    <button type="submit" class="btn-submit" id="btn-enviar">Solicitar Análise</button>
+                    <button type="submit" class="btn-submit" id="btn-enviar" aria-label="Enviar formulário para simulação">Solicitar Análise</button>
                 </form>
             </div>
             <div id="sucesso-msg" style="display:none; text-align:center; padding:30px 10px;" class="fade-in">
                 <div style="font-size:60px; color:#27ae60; margin-bottom:15px;" aria-hidden="true">✅</div>
-                <h2 style="color:#333;">Solicitação Recebida!</h2>
+                <h2>Solicitação Recebida!</h2>
                 <p
                     style="color: #ff0000; font-weight: 900; font-size: 15px; text-align: center; margin-top: 10px; text-transform: uppercase;">
                     Clique no botão abaixo para receber sua simulação agora mesmo!
                 </p>
 
-                <a id="btn-whats-direto" href="#" target="_blank" class="btn-whatsapp-pos">
+                <a id="btn-whats-direto" href="#" target="_blank" class="btn-whatsapp-pos" aria-label="Falar com Jefferson Reis no WhatsApp">
                     <i class="fab fa-whatsapp" style="font-size: 22px;" aria-hidden="true"></i> Falar com Jefferson Reis
                 </a>
 
