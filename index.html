@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/logo.png" type="image/png">
+    <link rel="icon" href="../img/logo.png" type="image/png">
     <title>Reis Consultoria Financeira</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
         :root {
             --primary: #C8102E;
@@ -154,7 +154,6 @@
             /* Truque para subir o bloco em relação ao texto */
         }
 
-        /* INSERÇÃO CIRÚRGICA: Alterado de .form-box h3 para .form-box h2 (Acessibilidade - Hierarquia) */
         .form-box h2 {
             text-align: center;
             color: var(--dark);
@@ -166,7 +165,6 @@
 
         .form-sub {
             text-align: center;
-            /* INSERÇÃO CIRÚRGICA: Cor escurecida para #444 para passar no teste de Contraste */
             color: #444;
             font-size: 13px;
             margin-bottom: 20px;
@@ -641,14 +639,14 @@
             <p>Descubra como conquistar seu patrimônio com as menores taxas do mercado.</p>
 
             <div class="credito-grid">
-                <div class="credito-item"><i class="fas fa-home"></i> <span>IMÓVEL</span></div>
-                <div class="credito-item"><i class="fas fa-car"></i> <span>AUTOMÓVEL</span></div>
-                <div class="credito-item"><i class="fas fa-tractor"></i> <span>AGRONEGÓCIO</span></div>
-                <div class="credito-item"><i class="fas fa-truck"></i> <span>CAMINHÃO</span></div>
-                <div class="credito-item"><i class="fas fa-tools"></i> <span>REFORMA</span></div>
-                <div class="credito-item"><i class="fas fa-ship"></i> <span>NÁUTICO</span></div>
-                <div class="credito-item"><i class="fas fa-hand-holding-heart"></i> <span>ESTÉTICA</span></div>
-                <div class="credito-item"><i class="fas fa-motorcycle"></i> <span>MOTO</span></div>
+                <div class="credito-item"><i class="fas fa-home" aria-hidden="true"></i> <span>IMÓVEL</span></div>
+                <div class="credito-item"><i class="fas fa-car" aria-hidden="true"></i> <span>AUTOMÓVEL</span></div>
+                <div class="credito-item"><i class="fas fa-tractor" aria-hidden="true"></i> <span>AGRONEGÓCIO</span></div>
+                <div class="credito-item"><i class="fas fa-truck" aria-hidden="true"></i> <span>CAMINHÃO</span></div>
+                <div class="credito-item"><i class="fas fa-tools" aria-hidden="true"></i> <span>REFORMA</span></div>
+                <div class="credito-item"><i class="fas fa-ship" aria-hidden="true"></i> <span>NÁUTICO</span></div>
+                <div class="credito-item"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i> <span>ESTÉTICA</span></div>
+                <div class="credito-item"><i class="fas fa-motorcycle" aria-hidden="true"></i> <span>MOTO</span></div>
             </div>
         </div>
 
@@ -658,20 +656,20 @@
                 <p class="form-sub">Preencha para receber uma análise personalizada.</p>
                 <form id="leadForm" onsubmit="handleForm(event)">
                     <div class="input-group">
-                        <label for="input-name">Nome Completo</label>
-                        <input type="text" name="name" id="input-name" placeholder="Digite seu nome" required>
+                        <label for="form_name">Nome Completo</label>
+                        <input type="text" name="name" id="form_name" placeholder="Digite seu nome" required>
                     </div>
                     <div class="input-group">
-                        <label for="input-email">E-mail (Para receber a proposta)</label>
-                        <input type="email" name="email" id="input-email" placeholder="seu@email.com" required>
+                        <label for="form_email">E-mail (Para receber a proposta)</label>
+                        <input type="email" name="email" id="form_email" placeholder="seu@email.com" required>
                     </div>
                     <div class="input-group">
                         <label for="phone">WhatsApp (DDD ou +País)</label>
                         <input type="tel" name="phone" id="phone" placeholder="(00) 90000-0000 ou +1..." required>
                     </div>
                     <div class="input-group">
-                        <label for="select-product">Qual o seu interesse?</label>
-                        <select name="product" id="select-product">
+                        <label for="form_product">Qual o seu interesse?</label>
+                        <select name="product" id="form_product">
                             <option value="Imóvel">🏡 Imóvel</option>
                             <option value="Veículo">🚗 Automóvel ou Moto</option>
                             <option value="Pesados">🚛 Caminhão ou Máquinas</option>
@@ -688,19 +686,19 @@
                             <input type="hidden" name="value" id="credit_value_hidden">
                         </div>
                     </div>
-                    <button type="submit" class="btn-submit" id="btn-enviar">Solicitar Análise</button>
+                    <button type="submit" class="btn-submit" id="btn-enviar" aria-label="Enviar formulário para simulação">Solicitar Análise</button>
                 </form>
             </div>
             <div id="sucesso-msg" style="display:none; text-align:center; padding:30px 10px;" class="fade-in">
-                <div style="font-size:60px; color:#27ae60; margin-bottom:15px;">✅</div>
+                <div style="font-size:60px; color:#27ae60; margin-bottom:15px;" aria-hidden="true">✅</div>
                 <h2 style="color:#333; font-size: 22px; font-weight: 800; text-transform: uppercase;">Solicitação Recebida!</h2>
                 <p
                     style="color: #ff0000; font-weight: 900; font-size: 15px; text-align: center; margin-top: 10px; text-transform: uppercase;">
                     Clique no botão abaixo para receber sua simulação agora mesmo!
                 </p>
 
-                <a id="btn-whats-direto" href="#" target="_blank" class="btn-whatsapp-pos">
-                    <i class="fab fa-whatsapp" style="font-size: 22px;"></i> Falar com Jefferson Reis
+                <a id="btn-whats-direto" href="#" target="_blank" class="btn-whatsapp-pos" aria-label="Abrir WhatsApp para falar com Jefferson Reis">
+                    <i class="fab fa-whatsapp" style="font-size: 22px;" aria-hidden="true"></i> Falar com Jefferson Reis
                 </a>
 
                 <button onclick="novaSimulacao()" class="btn-voltar">Fazer Nova Simulação</button>
@@ -710,7 +708,7 @@
 
     <section class="sobre">
         <div class="sobre-img">
-            <img src="img/jefferson.jpg" alt="Jefferson Reis" loading="lazy"
+            <img src="../img/jefferson.jpg" alt="Foto de Jefferson Reis" loading="lazy"
                 onerror="this.src='https://via.placeholder.com/500x500/111/fff?text=FOTO+JEFFERSON'">
         </div>
         <div class="sobre-content">
@@ -757,15 +755,15 @@
     <section class="seguranca-final">
         <div class="seguranca-container">
             <div class="seguranca-item">
-                <span style="color:#C8102E; font-size:20px;">🛡️</span>
+                <span style="color:#C8102E; font-size:20px;" aria-hidden="true">🛡️</span>
                 <span>Site 100% Seguro</span>
             </div>
             <div class="seguranca-item">
-                <span style="color:#C8102E; font-size:20px;">🔒</span>
+                <span style="color:#C8102E; font-size:20px;" aria-hidden="true">🔒</span>
                 <span>Criptografia SSL 256-bit</span>
             </div>
             <div class="seguranca-item">
-                <span style="color:#C8102E; font-size:20px;">✅</span>
+                <span style="color:#C8102E; font-size:20px;" aria-hidden="true">✅</span>
                 <span>Dados Protegidos (LGPD)</span>
             </div>
         </div>
@@ -774,19 +772,17 @@
     <footer>
         <div class="footer-info">
             <div class="social-links">
-                <a href="https://www.instagram.com/reis.jeffersonreis" target="_blank" title="Instagram">
-                    <i class="fab fa-instagram"></i>
+                <a href="https://www.instagram.com/reis.jeffersonreis" target="_blank" title="Instagram" aria-label="Acessar Instagram">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.facebook.com/share/1FahqzhuGR/?mibextid=wwXIfr" target="_blank" title="Facebook">
-                    <i class="fab fa-facebook-f"></i>
+                <a href="https://www.facebook.com/share/1FahqzhuGR/?mibextid=wwXIfr" target="_blank" title="Facebook" aria-label="Acessar Facebook">
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
                 </a>
-                <a href="https://youtube.com/@reisconsultoriaefinanceira1156?si=GOjjIZc281JGM7qY" target="_blank"
-                    title="YouTube">
-                    <i class="fab fa-youtube"></i>
+                <a href="https://youtube.com/@reisconsultoriaefinanceira1156?si=GOjjIZc281JGM7qY" target="_blank" title="YouTube" aria-label="Acessar YouTube">
+                    <i class="fab fa-youtube" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.tiktok.com/@reis.jeffersonreis?_t=ZM-8up0jftTm3L&_r=1" target="_blank"
-                    title="TikTok">
-                    <i class="fab fa-tiktok"></i>
+                <a href="https://www.tiktok.com/@reis.jeffersonreis?_t=ZM-8up0jftTm3L&_r=1" target="_blank" title="TikTok" aria-label="Acessar TikTok">
+                    <i class="fab fa-tiktok" aria-hidden="true"></i>
                 </a>
             </div>
             <strong>REIS CONSULTORIA FINANCEIRA - 46.031.904/0001-85</strong>
@@ -797,7 +793,7 @@
         &copy; 2025 Reis Consultoria Financeira. Todos os direitos reservados.
     </footer>
 
-    <script src="js/api.js"></script>
+    <script src="../js/api.js"></script>
     <script>
         // MUDANÇA PROFISSIONAL: Link direto para o Webhook com o ID do seu pai
         const WEBHOOK_URL = "https://consorcio-hub-api.onrender.com/api/v1/webhook/2";
