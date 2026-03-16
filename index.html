@@ -154,7 +154,8 @@
             /* Truque para subir o bloco em relação ao texto */
         }
 
-        .form-box h3 {
+        /* INSERÇÃO CIRÚRGICA: Alterado de .form-box h3 para .form-box h2 (Acessibilidade - Hierarquia) */
+        .form-box h2 {
             text-align: center;
             color: var(--dark);
             margin-bottom: 5px;
@@ -165,7 +166,8 @@
 
         .form-sub {
             text-align: center;
-            color: #666;
+            /* INSERÇÃO CIRÚRGICA: Cor escurecida para #444 para passar no teste de Contraste */
+            color: #444;
             font-size: 13px;
             margin-bottom: 20px;
         }
@@ -652,24 +654,24 @@
 
         <div class="form-box" id="simular">
             <div id="form-container-div" class="fade-in">
-                <h3>Simulação Gratuita</h3>
+                <h2>Simulação Gratuita</h2>
                 <p class="form-sub">Preencha para receber uma análise personalizada.</p>
                 <form id="leadForm" onsubmit="handleForm(event)">
                     <div class="input-group">
-                        <label>Nome Completo</label>
-                        <input type="text" name="name" placeholder="Digite seu nome" required>
+                        <label for="input-name">Nome Completo</label>
+                        <input type="text" name="name" id="input-name" placeholder="Digite seu nome" required>
                     </div>
                     <div class="input-group">
-                        <label>E-mail (Para receber a proposta)</label>
-                        <input type="email" name="email" placeholder="seu@email.com" required>
+                        <label for="input-email">E-mail (Para receber a proposta)</label>
+                        <input type="email" name="email" id="input-email" placeholder="seu@email.com" required>
                     </div>
                     <div class="input-group">
-                        <label>WhatsApp (DDD ou +País)</label>
+                        <label for="phone">WhatsApp (DDD ou +País)</label>
                         <input type="tel" name="phone" id="phone" placeholder="(00) 90000-0000 ou +1..." required>
                     </div>
                     <div class="input-group">
-                        <label>Qual o seu interesse?</label>
-                        <select name="product">
+                        <label for="select-product">Qual o seu interesse?</label>
+                        <select name="product" id="select-product">
                             <option value="Imóvel">🏡 Imóvel</option>
                             <option value="Veículo">🚗 Automóvel ou Moto</option>
                             <option value="Pesados">🚛 Caminhão ou Máquinas</option>
@@ -678,9 +680,9 @@
                         </select>
                     </div>
                     <div class="input-group">
-                        <label>Valor do Crédito Desejado</label>
+                        <label for="valor_visual">Valor do Crédito Desejado</label>
                         <div class="input-wrapper">
-                            <span class="currency-symbol">R$</span>
+                            <span class="currency-symbol" aria-hidden="true">R$</span>
                             <input type="tel" id="valor_visual" class="input-currency" placeholder="0,00"
                                 oninput="formatarMoeda(this)" required>
                             <input type="hidden" name="value" id="credit_value_hidden">
@@ -691,7 +693,7 @@
             </div>
             <div id="sucesso-msg" style="display:none; text-align:center; padding:30px 10px;" class="fade-in">
                 <div style="font-size:60px; color:#27ae60; margin-bottom:15px;">✅</div>
-                <h3 style="color:#333;">Solicitação Recebida!</h3>
+                <h2 style="color:#333; font-size: 22px; font-weight: 800; text-transform: uppercase;">Solicitação Recebida!</h2>
                 <p
                     style="color: #ff0000; font-weight: 900; font-size: 15px; text-align: center; margin-top: 10px; text-transform: uppercase;">
                     Clique no botão abaixo para receber sua simulação agora mesmo!
