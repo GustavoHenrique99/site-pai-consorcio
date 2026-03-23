@@ -701,7 +701,7 @@
                         <div class="options-grid">
                             <div class="option-btn" onclick="selectOption('Imóvel')"><i class="fas fa-home"></i> Imóvel</div>
                             <div class="option-btn" onclick="selectOption('Veículo')"><i class="fas fa-car"></i> Veículo</div>
-                            <div class="option-btn" onclick="selectOption('Caminhão ou máquinas')"><i class="fas fa-truck"></i>Caminhão ou máquinas</div>
+                            <div class="option-btn" onclick="selectOption('Caminhão ou máquinas')"><i class="fas fa-truck"></i> Caminhão ou máquinas</div>
                             <div class="option-btn" onclick="selectOption('Serviços')"><i class="fas fa-plane"></i> Serviços (cirurgia, viagem)</div>
                             <div class="option-btn" onclick="selectOption('Investimentos')"><i class="fas fa-chart-line"></i> Investimentos (outros)</div>
                         </div>
@@ -767,7 +767,7 @@
                             <input type="email" id="email" placeholder="seu@email.com" required>
                         </div>
                         <div class="input-group">
-                            <label>WhatsApp</label>
+                            <label>WhatsApp (DDD ou +País)</label>
                             <input type="tel" class="phone-mask" id="whatsapp" placeholder="+55 (00) 00000-0000" required>
                         </div>
                         <div class="form-actions">
@@ -1073,6 +1073,7 @@
             showStep(1);
         }
 
+        // MÁSCARA DE DINHEIRO
         const moneyInputs = document.querySelectorAll('.money-mask');
         moneyInputs.forEach(input => {
             input.addEventListener('input', function (e) {
@@ -1085,11 +1086,20 @@
             });
         });
 
+        // MÁSCARA INTERNACIONAL INTELIGENTE
         const phoneInput = document.querySelector('.phone-mask');
         phoneInput.addEventListener('input', function (e) {
-            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,2})(\d{0,5})(\d{0,4})/);
-            if (!x[1]) { e.target.value = '+55 '; return; }
-            e.target.value = !x[2] ? '+' + x[1] : '+' + x[1] + ' (' + x[2] + (x[3] ? ') ' + x[3] : '') + (x[4] ? '-' + x[4] : '');
+            let val = e.target.value;
+            // Se começar com '+', libera para formato internacional livre
+            if (val.startsWith('+')) {
+                e.target.value = val.replace(/[^0-9+\- ()]/g, '');
+            } else {
+                // Se não tiver '+', aplica máscara padrão Brasil
+                let x = val.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+                if (x) {
+                    e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+                }
+            }
         });
 
         document.getElementById('btn-whats-direto').addEventListener('click', function() {
