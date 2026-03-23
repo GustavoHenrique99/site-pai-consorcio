@@ -392,6 +392,238 @@
             font-size: 14px;
         }
 
+        /* --- DEPOIMENTOS E FAQ (INSERÇÃO CIRÚRGICA) --- */
+        .depoimentos {
+            padding: 80px 5%;
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .carrossel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 50px auto 0;
+        }
+
+        .depoimentos-track {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding-bottom: 20px;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .depoimentos-track::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .depoimento-card {
+            flex: 0 0 calc(100% - 40px);
+            scroll-snap-align: center;
+            background: #111;
+            border-radius: 8px;
+            border: 1px solid #333;
+            overflow: hidden;
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        @media (min-width: 768px) {
+            .depoimento-card {
+                flex: 0 0 calc(33.333% - 14px);
+            }
+        }
+
+        .depoimento-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .media-container {
+            width: 100%;
+            height: 220px; /* INSERÇÃO CIRÚRGICA: Altura reduzida para o tamanho clássico/harmônico */
+            background: #111;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .media-container video, .media-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+        }
+
+        .depoimento-body {
+            padding: 20px;
+        }
+
+        .estrelas {
+            color: #f1c40f;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .cliente-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cliente-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 16px;
+            color: white;
+        }
+
+        .cliente-nome {
+            font-weight: 700;
+            font-size: 15px;
+            color: white;
+        }
+
+        .cliente-tipo {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        /* Novo Rodapé dos Depoimentos (Limpo e Profissional) */
+        .depoimento-footer {
+            padding: 15px 20px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border-top: 1px solid #222;
+        }
+
+        .depoimento-footer i {
+            color: #27ae60;
+            font-size: 18px;
+        }
+
+        .depoimento-footer span {
+            color: #fff;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-prev { left: -15px; }
+        .btn-next { right: -15px; }
+
+        @media (max-width: 768px) {
+            .btn-prev { left: 5px; }
+            .btn-next { right: 5px; }
+        }
+
+        .faq {
+            padding: 80px 5%;
+            background: var(--gray);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        .faq-btn {
+            width: 100%;
+            text-align: left;
+            padding: 20px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+
+        .faq-btn:hover {
+            background: #fafafa;
+        }
+
+        .faq-btn i {
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .faq-btn.ativo i {
+            transform: rotate(180deg);
+        }
+
+        .faq-resposta {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .faq-btn.ativo + .faq-resposta {
+            padding: 0 20px 20px 20px;
+            max-height: 500px;
+        }
+
         .seguranca-final {
             padding: 40px 5%;
             background: var(--gray);
@@ -640,16 +872,13 @@
 
             .credito-grid {
                 grid-template-columns: repeat(2, 1fr);
-                /* 2 colunas iguais no celular */
                 justify-content: center;
-                /* Centraliza no mobile */
                 gap: 15px 10px;
             }
 
             .credito-item {
                 justify-content: flex-start;
                 padding-left: 10%;
-                /* Pequeno recuo para não colar na borda */
             }
 
             .installments-grid {
@@ -859,6 +1088,135 @@
         </div>
     </section>
 
+    <section class="depoimentos">
+        <h2 class="section-title" style="color: var(--white); font-size: 30px;">Quem planeja, <span style="color: var(--primary);">realiza.</span></h2>
+        <p>Veja os resultados reais de quem confiou em nossa consultoria.</p>
+        
+        <div class="carrossel-container">
+            <button class="nav-btn btn-prev" onclick="scrollDepoimentos(-1)" aria-label="Ver depoimento anterior"><i class="fas fa-chevron-left"></i></button>
+            
+            <div class="depoimentos-track" id="track-depoimentos">
+                
+                <div class="depoimento-card">
+                    <div class="media-container">
+                        <video controls>
+                            <source src="video/videodep.mp4#t=0.001" type="video/mp4">
+                            Seu navegador não suporta vídeos.
+                        </video>
+                    </div>
+                    <div class="depoimento-footer">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Resultados Reais</span>
+                    </div>
+                </div>
+                
+                <div class="depoimento-card">
+                    <div class="media-container">
+                        <img src="img/dep1.webp" alt="Casa conquistada pelo cliente" onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
+                    </div>
+                    <div class="depoimento-footer">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Cliente Contemplado</span>
+                    </div>
+                </div>
+                
+                <div class="depoimento-card">
+                    <div class="media-container">
+                        <img src="img/dep2.webp" alt="Casa conquistada pelo cliente" onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
+                    </div>
+                    <div class="depoimento-footer">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Mais um Sonho Realizado</span>
+                    </div>
+                </div>
+                
+                <div class="depoimento-card">
+                    <div class="media-container">
+                        <img src="img/dep3.webp" alt="Moto conquistada" onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
+                    </div>
+                    <div class="depoimento-footer">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Consultoria na Prática</span>
+                    </div>
+                </div>
+
+                <div class="depoimento-card">
+                    <div class="media-container">
+                        <img src="img/dep4.webp" alt="Casa conquistada pelo cliente" onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
+                    </div>
+                    <div class="depoimento-footer">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Objetivo Alcançado</span>
+                    </div>
+                </div>
+
+                <div class="depoimento-card">
+                    <div class="media-container">
+                        <img src="img/dep5.webp" alt="Casa conquistada pelo cliente" onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
+                    </div>
+                    <div class="depoimento-footer">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Cliente Satisfeito</span>
+                    </div>
+                </div>
+
+                <div class="depoimento-card">
+                    <div class="media-container">
+                        <img src="img/dep6.webp" alt="Casa conquistada pelo cliente" onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
+                    </div>
+                    <div class="depoimento-footer">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Mais um Cliente Feliz</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <button class="nav-btn btn-next" onclick="scrollDepoimentos(1)" aria-label="Ver próximo depoimento"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <section class="faq">
+        <h2 class="section-title" style="color: var(--dark); font-size: 30px; text-align: center;">Perguntas <span style="color: var(--primary);">Frequentes</span></h2>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <button class="faq-btn">O consórcio cobra juros igual ao financiamento? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-resposta">
+                    <p><strong>Não!</strong> Essa é a principal vantagem do consórcio. Diferente do financiamento bancário, que cobra juros compostos altíssimos, o consórcio cobra apenas uma pequena Taxa de Administração, que é fixa e diluída ao longo de todas as parcelas. No final, a economia chega a ser gigantesca.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-btn">Consórcio demora muito para contemplar? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-resposta">
+                    <p>Não necessariamente. Dependendo do seu capital para lance, ou utilizando o "Lance Embutido", podemos traçar estratégias em grupos já em andamento para acelerar sua contemplação logo nos primeiros meses. A consultoria serve exatamente para não depender apenas da sorte dos sorteios.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-btn">Não tenho dinheiro para o lance. Posso ser contemplado rápido? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-resposta">
+                    <p>Sim! Uma excelente estratégia é o <strong>Lance Embutido</strong>. Nele, você utiliza um percentual do próprio crédito que vai receber para ofertar o lance. Ou seja, você não precisa tirar dinheiro do próprio bolso no momento da contemplação.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-btn">Posso usar meu saldo do FGTS? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-resposta">
+                    <p>Sim! Para consórcios imobiliários, você pode utilizar 100% do seu saldo do FGTS para ofertar lances (aumentando suas chances de pegar a chave rápido), complementar a carta de crédito na hora da compra, ou até mesmo amortizar as parcelas futuras.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-btn">E se eu tiver um imprevisto e atrasar a parcela? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-resposta">
+                    <p>Se você ainda não foi contemplado, o atraso apenas impede a sua participação nos sorteios daquele mês específico. Não perde o que já pagou. Caso os imprevistos continuem, há opções de diminuir a carta de crédito para reduzir a parcela. Planejamento e flexibilidade andam juntos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="seguranca-final">
         <div class="seguranca-container">
             <div class="seguranca-item">
@@ -994,7 +1352,6 @@
             nextStep(4);
         }
 
-        // INSERÇÃO CIRÚRGICA: Lógica para abrir e fechar o campo do valor do lance
         function selectRadio(group, value) {
             document.getElementById('reservaLance').value = value;
             document.getElementById('reservaSim').classList.remove('selected');
@@ -1004,11 +1361,11 @@
 
             if (value === 'Sim') {
                 document.getElementById('reservaSim').classList.add('selected');
-                grupoValorLance.style.display = 'block'; // Mostra o campo
+                grupoValorLance.style.display = 'block'; 
             } else {
                 document.getElementById('reservaNao').classList.add('selected');
-                grupoValorLance.style.display = 'none'; // Esconde o campo
-                document.getElementById('valorLanceAproximado').value = ''; // Limpa o valor para não ir lixo pro banco
+                grupoValorLance.style.display = 'none'; 
+                document.getElementById('valorLanceAproximado').value = ''; 
             }
         }
 
@@ -1025,7 +1382,6 @@
             let valorLimpo = parseFloat(valorSujo.replace(/[R$\s.]/g, '').replace(',', '.'));
             const produtoSelecionado = document.getElementById('interesse').value || "Consórcio";
 
-            // INSERÇÃO CIRÚRGICA: Tratamento do valor do lance para salvar nas observações
             let lanceTexto = document.getElementById('reservaLance').value;
             if (lanceTexto === 'Sim') {
                 const valorLanceExato = document.getElementById('valorLanceAproximado').value || 'Não informado';
@@ -1052,7 +1408,6 @@
                 body: JSON.stringify(payload)
             })
             .then(async response => {
-                // DISPARO DO PIXEL: Conversão Lead com Interesse Corrigido
                 fbq('track', 'Lead', {
                     content_name: 'Simulação ' + produtoSelecionado,
                     value: isNaN(valorLimpo) ? 0 : valorLimpo,
@@ -1091,7 +1446,6 @@
             document.getElementById('valorParcelaSelecionado').value = '';
             document.getElementById('reservaLance').value = '';
             
-            // INSERÇÃO CIRÚRGICA: Resetar o novo campo do lance ao iniciar nova simulação
             document.getElementById('grupoValorLance').style.display = 'none';
             document.getElementById('valorLanceAproximado').value = '';
 
@@ -1101,7 +1455,6 @@
             showStep(1);
         }
 
-        // MÁSCARA DE DINHEIRO
         const moneyInputs = document.querySelectorAll('.money-mask');
         moneyInputs.forEach(input => {
             input.addEventListener('input', function (e) {
@@ -1114,15 +1467,12 @@
             });
         });
 
-        // MÁSCARA INTERNACIONAL INTELIGENTE
         const phoneInput = document.querySelector('.phone-mask');
         phoneInput.addEventListener('input', function (e) {
             let val = e.target.value;
-            // Se começar com '+', libera para formato internacional livre
             if (val.startsWith('+')) {
                 e.target.value = val.replace(/[^0-9+\- ()]/g, '');
             } else {
-                // Se não tiver '+', aplica máscara padrão Brasil
                 let x = val.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
                 if (x) {
                     e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
@@ -1134,6 +1484,21 @@
             const produtoSelecionado = document.getElementById('interesse').value || "Consórcio";
             fbq('trackCustom', 'CliqueWhatsApp', {
                 content_name: 'WhatsApp ' + produtoSelecionado
+            });
+        });
+
+        // Lógica do Carrossel de Depoimentos
+        function scrollDepoimentos(direction) {
+            const track = document.getElementById('track-depoimentos');
+            const scrollAmount = track.querySelector('.depoimento-card').offsetWidth + 20;
+            track.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
+        }
+
+        // Lógica do Accordion (FAQ)
+        const faqBtns = document.querySelectorAll('.faq-btn');
+        faqBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.toggle('ativo');
             });
         });
     </script>
