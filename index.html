@@ -454,40 +454,6 @@
             font-size: 15px;
         }
 
-        @media (max-width: 768px) {
-            .hero {
-                padding-top: 80px;
-                text-align: center;
-            }
-
-            .hero h1 {
-                font-size: 28px;
-            }
-
-            .hero p {
-                border-left: none;
-                padding: 0;
-                font-size: 16px;
-            }
-
-            .sobre {
-                flex-direction: column-reverse;
-                padding: 50px 5%;
-            }
-
-            .sobre-img img {
-                box-shadow: 10px 10px 0px var(--primary);
-            }
-
-            .seguranca-container {
-                gap: 15px;
-            }
-
-            .form-box {
-                margin-top: 20px;
-            }
-        }
-
         .social-links {
             display: flex;
             justify-content: center;
@@ -603,23 +569,6 @@
             letter-spacing: 0.8px;
         }
 
-        /* Ajuste específico para Celular */
-        @media (max-width: 768px) {
-            .credito-grid {
-                grid-template-columns: repeat(2, 1fr);
-                /* 2 colunas iguais no celular */
-                justify-content: center;
-                /* Centraliza no mobile */
-                gap: 15px 10px;
-            }
-
-            .credito-item {
-                justify-content: flex-start;
-                padding-left: 10%;
-                /* Pequeno recuo para não colar na borda */
-            }
-        }
-
         /* ==========================================
            ESTILOS DO FORMULÁRIO MULTI-STEP
            ========================================== */
@@ -654,6 +603,59 @@
         .success-title { font-size: 22px; font-weight: 800; color: #333; text-transform: uppercase; margin-bottom: 10px; }
         .success-message-box p { color: #ff0000; font-weight: 900; font-size: 14px; text-transform: uppercase; margin-bottom: 20px; }
         .link-nova-simulacao { color: var(--primary); font-weight: bold; text-decoration: underline; font-size: 14px; cursor: pointer; }
+
+        /* Ajuste específico para Celular */
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 80px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                border-left: none;
+                padding: 0;
+                font-size: 16px;
+            }
+
+            .sobre {
+                flex-direction: column-reverse;
+                padding: 50px 5%;
+            }
+
+            .sobre-img img {
+                box-shadow: 10px 10px 0px var(--primary);
+            }
+
+            .seguranca-container {
+                gap: 15px;
+            }
+
+            .form-box {
+                margin-top: 20px;
+            }
+
+            .credito-grid {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 colunas iguais no celular */
+                justify-content: center;
+                /* Centraliza no mobile */
+                gap: 15px 10px;
+            }
+
+            .credito-item {
+                justify-content: flex-start;
+                padding-left: 10%;
+                /* Pequeno recuo para não colar na borda */
+            }
+
+            .installments-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
@@ -742,10 +744,12 @@
                             </div>
                             <input type="hidden" id="reservaLance" name="reservaLance" required>
                         </div>
-                        <div class="input-group">
-                            <label>Qual a renda mensal aproximada?</label>
-                            <input type="text" class="money-mask" id="renda" placeholder="Ex: R$ 8.000,00" required>
+                        
+                        <div class="input-group" id="grupoValorLance" style="display: none; animation: fadeIn 0.4s ease forwards;">
+                            <label>Qual valor aproximado do lance?</label>
+                            <input type="text" class="money-mask" id="valorLanceAproximado" placeholder="Ex: R$ 10.000,00">
                         </div>
+
                         <div class="form-actions">
                             <button type="button" class="btn-outline" onclick="prevStep(3)"><i class="fas fa-arrow-left"></i> Voltar</button>
                             <button type="button" class="btn-full" onclick="nextStep(5)">Avançar <i class="fas fa-arrow-right"></i></button>
@@ -758,6 +762,12 @@
                             <label>Nome completo</label>
                             <input type="text" id="nome" placeholder="Seu nome" required>
                         </div>
+                        
+                        <div class="input-group">
+                            <label>Qual a renda mensal aproximada?</label>
+                            <input type="text" class="money-mask" id="renda" placeholder="Ex: R$ 8.000,00" required>
+                        </div>
+
                         <div class="input-group">
                             <label>Qual a sua profissão?</label>
                             <input type="text" id="profissao" placeholder="Ex: Engenheiro, Empresário..." required>
@@ -984,15 +994,21 @@
             nextStep(4);
         }
 
+        // INSERÇÃO CIRÚRGICA: Lógica para abrir e fechar o campo do valor do lance
         function selectRadio(group, value) {
             document.getElementById('reservaLance').value = value;
             document.getElementById('reservaSim').classList.remove('selected');
             document.getElementById('reservaNao').classList.remove('selected');
+            
+            const grupoValorLance = document.getElementById('grupoValorLance');
 
             if (value === 'Sim') {
                 document.getElementById('reservaSim').classList.add('selected');
+                grupoValorLance.style.display = 'block'; // Mostra o campo
             } else {
                 document.getElementById('reservaNao').classList.add('selected');
+                grupoValorLance.style.display = 'none'; // Esconde o campo
+                document.getElementById('valorLanceAproximado').value = ''; // Limpa o valor para não ir lixo pro banco
             }
         }
 
@@ -1009,6 +1025,13 @@
             let valorLimpo = parseFloat(valorSujo.replace(/[R$\s.]/g, '').replace(',', '.'));
             const produtoSelecionado = document.getElementById('interesse').value || "Consórcio";
 
+            // INSERÇÃO CIRÚRGICA: Tratamento do valor do lance para salvar nas observações
+            let lanceTexto = document.getElementById('reservaLance').value;
+            if (lanceTexto === 'Sim') {
+                const valorLanceExato = document.getElementById('valorLanceAproximado').value || 'Não informado';
+                lanceTexto = `Sim (${valorLanceExato})`;
+            }
+
             const payload = {
                 cliente_nome: document.getElementById('nome').value,
                 cliente_whats: document.getElementById('whatsapp').value,
@@ -1016,7 +1039,7 @@
                 tipo_credito: produtoSelecionado,
                 valor_credito: isNaN(valorLimpo) ? 0 : valorLimpo,
                 usuario_id: 2,
-                observacoes: `Parcela: ${document.getElementById('valorParcelaSelecionado').value} | Profissão: ${document.getElementById('profissao').value} | Renda: ${document.getElementById('renda').value} | Lance: ${document.getElementById('reservaLance').value}`,
+                observacoes: `Parcela: ${document.getElementById('valorParcelaSelecionado').value} | Profissão: ${document.getElementById('profissao').value} | Renda: ${document.getElementById('renda').value} | Lance: ${lanceTexto}`,
                 dados_adicionais: { origem: "Site Oficial Multi-Step" }
             };
 
@@ -1067,6 +1090,11 @@
             document.getElementById('interesse').value = '';
             document.getElementById('valorParcelaSelecionado').value = '';
             document.getElementById('reservaLance').value = '';
+            
+            // INSERÇÃO CIRÚRGICA: Resetar o novo campo do lance ao iniciar nova simulação
+            document.getElementById('grupoValorLance').style.display = 'none';
+            document.getElementById('valorLanceAproximado').value = '';
+
             document.getElementById('progressBarContainer').style.display = 'block';
             document.querySelector('.form-box h2').style.display = 'block';
             document.querySelector('.form-sub').style.display = 'block';
