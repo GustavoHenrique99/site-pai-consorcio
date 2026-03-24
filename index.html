@@ -461,6 +461,49 @@
             object-fit: contain; 
         }
 
+        .depoimento-body {
+            padding: 20px;
+        }
+
+        .estrelas {
+            color: #f1c40f;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .cliente-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cliente-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 16px;
+            color: white;
+        }
+
+        .cliente-nome {
+            font-weight: 700;
+            font-size: 15px;
+            color: white;
+        }
+
+        .cliente-tipo {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
         .depoimento-footer {
             padding: 15px 20px;
             background: #111;
@@ -1258,6 +1301,13 @@
             document.getElementById(`step${step}`).classList.add('active');
             currentStep = step;
             updateProgress();
+
+            // INSERÇÃO CIRÚRGICA: Previne que a tela caia para a seção "Sobre" ao finalizar o formulário
+            if (step === 6) {
+                setTimeout(() => {
+                    document.getElementById('btn-whats-direto').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 150);
+            }
         }
 
         function nextStep(step) { showStep(step); }
