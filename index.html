@@ -86,7 +86,7 @@
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(20, 0, 0, 0.8) 100%);
             background-size: cover;
             background-position: center;
-            padding: 110px 5% 60px 5%;
+            padding: 80px 5% 60px 5%; /* INSERÇÃO CIRÚRGICA: Reduzido de 110px para 80px para subir a seção inteira */
             /* Padding reduzido para subir tudo */
             display: flex;
             flex-wrap: wrap;
@@ -136,6 +136,31 @@
             /* Reduzi a margem para colar no form */
             border-left: 4px solid var(--primary);
             padding-left: 15px;
+        }
+
+        /* INSERÇÃO CIRÚRGICA: Regras exclusivas para o PC (Equilibrando o design sem a grade) */
+        @media (min-width: 769px) {
+            .hero {
+                align-items: flex-start; /* INSERÇÃO CIRÚRGICA: Alterado de center para flex-start para remover o buraco no topo */
+            }
+            .hero-content {
+                margin-top: 30px; /* INSERÇÃO CIRÚRGICA: Alinha perfeitamente o texto com a caixa do formulário */
+            }
+            .hero h1 {
+                font-size: 52px; /* Título maior e imponente */
+                margin-bottom: 20px;
+                line-height: 1.15;
+            }
+            .hero p {
+                font-size: 20px; /* Texto de apoio mais encorpado */
+                max-width: 90%;
+                line-height: 1.5;
+            }
+            .tag-hero {
+                font-size: 14px;
+                padding: 8px 20px;
+                margin-bottom: 25px;
+            }
         }
 
         /* --- FORMULÁRIO (PUXADO PARA CIMA) --- */
@@ -190,7 +215,7 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             font-family: inherit;
-            font-size: 16px; /* INSERÇÃO CIRÚRGICA: Alterado para 16px para bloquear o zoom nativo dos teclados de celular */
+            font-size: 16px; 
             transition: 0.3s;
             background: #fdfdfd;
         }
@@ -545,7 +570,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            touch-action: manipulation;
+            touch-action: manipulation; 
         }
 
         .nav-btn:disabled {
@@ -773,42 +798,6 @@
             animation: none;
         }
 
-        .credito-grid {
-            display: grid;
-            /* No PC: 2 colunas que se ajustam ao tamanho do texto */
-            grid-template-columns: repeat(2, max-content);
-            gap: 12px 40px;
-            /* 12px entre linhas, 40px entre colunas */
-            margin-top: 30px;
-            justify-content: flex-start;
-            /* Alinha com o texto principal no PC */
-        }
-
-        .credito-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: transparent;
-            border: none;
-            cursor: default;
-            pointer-events: none;
-        }
-
-        .credito-item i {
-            color: var(--primary);
-            font-size: 16px;
-            width: 20px;
-            text-align: center;
-        }
-
-        .credito-item span {
-            font-size: 13px;
-            font-weight: 600;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-        }
-
         /* ==========================================
            ESTILOS DO FORMULÁRIO MULTI-STEP
            ========================================== */
@@ -878,17 +867,6 @@
                 margin-top: 20px;
             }
 
-            .credito-grid {
-                grid-template-columns: repeat(2, 1fr);
-                justify-content: center;
-                gap: 15px 10px;
-            }
-
-            .credito-item {
-                justify-content: flex-start;
-                padding-left: 10%;
-            }
-
             .installments-grid {
                 grid-template-columns: 1fr;
             }
@@ -911,17 +889,6 @@
                 <span style="color: var(--primary); font-weight: 900;">através do consórcio</span>
             </h1>
             <p>Descubra como conquistar seu patrimônio com as menores taxas do mercado.</p>
-
-            <div class="credito-grid">
-                <div class="credito-item"><i class="fas fa-home" aria-hidden="true"></i> <span>IMÓVEL</span></div>
-                <div class="credito-item"><i class="fas fa-car" aria-hidden="true"></i> <span>AUTOMÓVEL</span></div>
-                <div class="credito-item"><i class="fas fa-tractor" aria-hidden="true"></i> <span>AGRONEGÓCIO</span></div>
-                <div class="credito-item"><i class="fas fa-truck" aria-hidden="true"></i> <span>CAMINHÃO</span></div>
-                <div class="credito-item"><i class="fas fa-tools" aria-hidden="true"></i> <span>REFORMA</span></div>
-                <div class="credito-item"><i class="fas fa-ship" aria-hidden="true"></i> <span>NÁUTICO</span></div>
-                <div class="credito-item"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i> <span>ESTÉTICA</span></div>
-                <div class="credito-item"><i class="fas fa-motorcycle" aria-hidden="true"></i> <span>MOTO</span></div>
-            </div>
         </div>
 
         <div class="form-box" id="simular">
@@ -1302,10 +1269,9 @@
             currentStep = step;
             updateProgress();
 
-            // INSERÇÃO CIRÚRGICA: Centraliza o card de sucesso inteiro no mobile ao finalizar
             if (step === 6) {
                 setTimeout(() => {
-                    document.getElementById('simular').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    document.getElementById('simular').scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }, 150);
             }
         }
@@ -1390,7 +1356,7 @@
 
             const btnSubmit = document.querySelector('.btn-submit');
             const originalText = btnSubmit.innerHTML;
-            btnSubmit.innerHTML = 'ENVIANDO... <i class="fas fa-spinner fa-spin"></i>';
+            btnSubmit.innerHTML = 'ENVIANDO...';
             btnSubmit.disabled = true;
 
             let valorSujo = document.getElementById('valorCredito').value;
