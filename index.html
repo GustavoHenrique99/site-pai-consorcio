@@ -392,22 +392,20 @@
             font-size: 14px;
         }
 
-        /* --- DEPOIMENTOS (CORREÇÃO DE BUG MOBILE) --- */
+        /* --- DEPOIMENTOS E FAQ (INSERÇÃO CIRÚRGICA) --- */
         .depoimentos {
             padding: 80px 5%;
             background: var(--dark);
             color: white;
             text-align: center;
             overflow: hidden;
-            touch-action: pan-y; /* INSERÇÃO: Previne o zoom acidental ao tocar rápido na área do carrossel */
         }
 
         .carrossel-container {
             position: relative;
             max-width: 1200px;
             margin: 50px auto 0;
-            /* INSERÇÃO: Previne que o conteúdo estoure o contêiner e crie tela preta lateral */
-            overflow: hidden; 
+            overflow: hidden; /* Evita vazamento no mobile */
         }
 
         .depoimentos-track {
@@ -417,13 +415,12 @@
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
             padding-bottom: 20px;
-            scrollbar-width: none;
-            /* INSERÇÃO: Suaviza o touch no mobile */
-            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+            -webkit-overflow-scrolling: touch; /* Rolagem suave mobile */
         }
 
         .depoimentos-track::-webkit-scrollbar {
-            display: none;
+            display: none; /* Chrome/Safari */
         }
 
         .depoimento-card {
@@ -450,8 +447,8 @@
 
         .media-container {
             width: 100%;
-            height: 220px;
-            background: #111;
+            height: 220px; 
+            background: #111; 
             position: relative;
             display: flex;
             align-items: center;
@@ -505,19 +502,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            touch-action: manipulation; /* Evita zoom no double tap */
+            touch-action: manipulation; /* Previne zoom acidental */
         }
 
-        .nav-btn:hover {
-            background: white;
-            color: var(--primary);
-        }
-
-        /* INSERÇÃO: Esconde o botão se estiver desativado pelo JS */
         .nav-btn:disabled {
             opacity: 0.3;
             cursor: not-allowed;
             background: #555;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: white;
+            color: var(--primary);
         }
 
         .btn-prev { left: 0px; }
@@ -528,7 +524,6 @@
             .btn-next { right: 5px; }
         }
 
-        /* --- FAQ --- */
         .faq {
             padding: 80px 5%;
             background: var(--gray);
@@ -1170,6 +1165,13 @@
                     <p>Sim! Uma excelente estratégia é o <strong>Lance Embutido</strong>. Nele, você utiliza um percentual do próprio crédito que vai receber para ofertar o lance. Ou seja, você não precisa tirar dinheiro do próprio bolso no momento da contemplação.</p>
                 </div>
             </div>
+
+            <div class="faq-item">
+                <button class="faq-btn">Posso comprar carros seminovos ou imóveis usados? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-resposta">
+                    <p>Com certeza. A carta de crédito contemplada equivale a dinheiro na mão. Isso significa que você pode comprar veículos seminovos e imóveis prontos, tendo grande poder de negociação para conseguir bons descontos à vista.</p>
+                </div>
+            </div>
             
             <div class="faq-item">
                 <button class="faq-btn">Posso usar meu saldo do FGTS? <i class="fas fa-chevron-down"></i></button>
@@ -1345,7 +1347,7 @@
 
             const btnSubmit = document.querySelector('.btn-submit');
             const originalText = btnSubmit.innerHTML;
-            btnSubmit.innerHTML = 'ENVIANDO...';
+            btnSubmit.innerHTML = 'ENVIANDO... <i class="fas fa-spinner fa-spin"></i>';
             btnSubmit.disabled = true;
 
             let valorSujo = document.getElementById('valorCredito').value;
@@ -1457,21 +1459,20 @@
             });
         });
 
-        // INSERÇÃO CIRÚRGICA: Lógica do Carrossel blindada
+        // INSERÇÃO CIRÚRGICA: Lógica do Carrossel blindada (Anti-Spam e Limites Matemáticos)
         const track = document.getElementById('track-depoimentos');
         const btnPrev = document.getElementById('btnPrev');
         const btnNext = document.getElementById('btnNext');
+        let isScrolling = false; // Trava para cliques muito rápidos
 
         function updateCarrosselButtons() {
-            // Verifica se está no começo
-            if (track.scrollLeft <= 0) {
+            if (track.scrollLeft <= 5) { // Margem de segurança de 5px
                 btnPrev.disabled = true;
             } else {
                 btnPrev.disabled = false;
             }
             
-            // Verifica se chegou no final (margem de erro de 2px para arredondamento do navegador)
-            if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 2) {
+            if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 5) {
                 btnNext.disabled = true;
             } else {
                 btnNext.disabled = false;
@@ -1479,14 +1480,31 @@
         }
 
         function scrollDepoimentos(direction) {
-            const scrollAmount = track.querySelector('.depoimento-card').offsetWidth + 20;
-            track.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
+            if (isScrolling) return; // Se já estiver rolando, ignora o clique ansioso
+            
+            const cardWidth = track.querySelector('.depoimento-card').offsetWidth + 20; // 20px do gap
+            const currentScroll = track.scrollLeft;
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            
+            let targetScroll = currentScroll + (cardWidth * direction);
+            
+            // Trava matemática: não deixa o alvo passar do começo ou do fim
+            if (targetScroll <= 0) targetScroll = 0;
+            if (targetScroll >= maxScroll) targetScroll = maxScroll;
+            
+            isScrolling = true;
+            track.scrollTo({ left: targetScroll, behavior: 'smooth' });
+            
+            // Libera o clique e atualiza botões depois que a animação CSS terminar (~400ms)
+            setTimeout(() => {
+                isScrolling = false;
+                updateCarrosselButtons();
+            }, 400);
         }
 
-        // Adiciona os eventos para checar a posição sempre que rolar
         track.addEventListener('scroll', updateCarrosselButtons);
-        // Roda uma vez no início para checar o estado inicial
-        updateCarrosselButtons();
+        // Pequeno delay no load para garantir que as larguras foram calculadas
+        setTimeout(updateCarrosselButtons, 100);
 
         // Lógica do Accordion (FAQ)
         const faqBtns = document.querySelectorAll('.faq-btn');
