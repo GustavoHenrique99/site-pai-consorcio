@@ -545,9 +545,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            touch-action: manipulation; /* Previne zoom acidental */
+            touch-action: manipulation; /* INSERÇÃO CIRÚRGICA: Previne zoom acidental */
         }
 
+        /* INSERÇÃO CIRÚRGICA: Estilo para botão desativado */
         .nav-btn:disabled {
             opacity: 0.3;
             cursor: not-allowed;
@@ -559,8 +560,8 @@
             color: var(--primary);
         }
 
-        .btn-prev { left: 0px; }
-        .btn-next { right: 0px; }
+        .btn-prev { left: -15px; }
+        .btn-next { right: -15px; }
 
         @media (max-width: 768px) {
             .btn-prev { left: 5px; }
@@ -1301,13 +1302,6 @@
             document.getElementById(`step${step}`).classList.add('active');
             currentStep = step;
             updateProgress();
-
-            // INSERÇÃO CIRÚRGICA: Previne que a tela caia para a seção "Sobre" ao finalizar o formulário
-            if (step === 6) {
-                setTimeout(() => {
-                    document.getElementById('btn-whats-direto').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 150);
-            }
         }
 
         function nextStep(step) { showStep(step); }
