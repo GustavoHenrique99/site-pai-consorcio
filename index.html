@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="icon" href="img/logo.png" type="image/png">
     <title>Reis Consultoria Financeira</title>
     
@@ -190,7 +190,7 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             font-family: inherit;
-            font-size: 14px;
+            font-size: 16px; /* INSERÇÃO CIRÚRGICA: Alterado para 16px para bloquear o zoom nativo dos teclados de celular */
             transition: 0.3s;
             background: #fdfdfd;
         }
@@ -392,7 +392,7 @@
             font-size: 14px;
         }
 
-        /* --- DEPOIMENTOS E FAQ (INSERÇÃO CIRÚRGICA) --- */
+        /* --- DEPOIMENTOS E FAQ --- */
         .depoimentos {
             padding: 80px 5%;
             background: var(--dark);
@@ -405,7 +405,7 @@
             position: relative;
             max-width: 1200px;
             margin: 50px auto 0;
-            overflow: hidden; /* Evita vazamento no mobile */
+            overflow: hidden;
         }
 
         .depoimentos-track {
@@ -415,12 +415,12 @@
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
             padding-bottom: 20px;
-            scrollbar-width: none; /* Firefox */
-            -webkit-overflow-scrolling: touch; /* Rolagem suave mobile */
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
         }
 
         .depoimentos-track::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
+            display: none;
         }
 
         .depoimento-card {
@@ -545,7 +545,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            touch-action: manipulation; /* Previne zoom acidental */
+            touch-action: manipulation;
         }
 
         .nav-btn:disabled {
@@ -1302,10 +1302,10 @@
             currentStep = step;
             updateProgress();
 
-            // INSERÇÃO CIRÚRGICA: Previne que a tela caia para a seção "Sobre" ao finalizar o formulário
+            // INSERÇÃO CIRÚRGICA: Centraliza o card de sucesso inteiro no mobile ao finalizar
             if (step === 6) {
                 setTimeout(() => {
-                    document.getElementById('btn-whats-direto').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    document.getElementById('simular').scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }, 150);
             }
         }
@@ -1502,14 +1502,14 @@
             });
         });
 
-        // INSERÇÃO CIRÚRGICA: Lógica do Carrossel blindada (Anti-Spam e Limites Matemáticos)
+        // Lógica do Carrossel blindada (Anti-Spam e Limites Matemáticos)
         const track = document.getElementById('track-depoimentos');
         const btnPrev = document.getElementById('btnPrev');
         const btnNext = document.getElementById('btnNext');
-        let isScrolling = false; // Trava para cliques muito rápidos
+        let isScrolling = false;
 
         function updateCarrosselButtons() {
-            if (track.scrollLeft <= 5) { // Margem de segurança de 5px
+            if (track.scrollLeft <= 5) {
                 btnPrev.disabled = true;
             } else {
                 btnPrev.disabled = false;
@@ -1523,22 +1523,20 @@
         }
 
         function scrollDepoimentos(direction) {
-            if (isScrolling) return; // Se já estiver rolando, ignora o clique ansioso
+            if (isScrolling) return; 
             
-            const cardWidth = track.querySelector('.depoimento-card').offsetWidth + 20; // 20px do gap
+            const cardWidth = track.querySelector('.depoimento-card').offsetWidth + 20; 
             const currentScroll = track.scrollLeft;
             const maxScroll = track.scrollWidth - track.clientWidth;
             
             let targetScroll = currentScroll + (cardWidth * direction);
             
-            // Trava matemática: não deixa o alvo passar do começo ou do fim
             if (targetScroll <= 0) targetScroll = 0;
             if (targetScroll >= maxScroll) targetScroll = maxScroll;
             
             isScrolling = true;
             track.scrollTo({ left: targetScroll, behavior: 'smooth' });
             
-            // Libera o clique e atualiza botões depois que a animação CSS terminar (~400ms)
             setTimeout(() => {
                 isScrolling = false;
                 updateCarrosselButtons();
@@ -1546,7 +1544,6 @@
         }
 
         track.addEventListener('scroll', updateCarrosselButtons);
-        // Pequeno delay no load para garantir que as larguras foram calculadas
         setTimeout(updateCarrosselButtons, 100);
 
         // Lógica do Accordion (FAQ)
