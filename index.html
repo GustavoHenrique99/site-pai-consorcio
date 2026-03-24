@@ -392,19 +392,22 @@
             font-size: 14px;
         }
 
-        /* --- DEPOIMENTOS E FAQ (INSERÇÃO CIRÚRGICA) --- */
+        /* --- DEPOIMENTOS (CORREÇÃO DE BUG MOBILE) --- */
         .depoimentos {
             padding: 80px 5%;
             background: var(--dark);
             color: white;
             text-align: center;
             overflow: hidden;
+            touch-action: pan-y; /* INSERÇÃO: Previne o zoom acidental ao tocar rápido na área do carrossel */
         }
 
         .carrossel-container {
             position: relative;
             max-width: 1200px;
             margin: 50px auto 0;
+            /* INSERÇÃO: Previne que o conteúdo estoure o contêiner e crie tela preta lateral */
+            overflow: hidden; 
         }
 
         .depoimentos-track {
@@ -414,11 +417,13 @@
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
             padding-bottom: 20px;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
+            /* INSERÇÃO: Suaviza o touch no mobile */
+            -webkit-overflow-scrolling: touch;
         }
 
         .depoimentos-track::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
+            display: none;
         }
 
         .depoimento-card {
@@ -445,7 +450,7 @@
 
         .media-container {
             width: 100%;
-            height: 220px; /* INSERÇÃO CIRÚRGICA: Altura reduzida para o tamanho clássico/harmônico */
+            height: 220px;
             background: #111;
             position: relative;
             display: flex;
@@ -459,50 +464,6 @@
             object-fit: contain; 
         }
 
-        .depoimento-body {
-            padding: 20px;
-        }
-
-        .estrelas {
-            color: #f1c40f;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
-        .cliente-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .cliente-avatar {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-size: 16px;
-            color: white;
-        }
-
-        .cliente-nome {
-            font-weight: 700;
-            font-size: 15px;
-            color: white;
-        }
-
-        .cliente-tipo {
-            font-size: 11px;
-            color: #888;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-top: 2px;
-        }
-
-        /* Novo Rodapé dos Depoimentos (Limpo e Profissional) */
         .depoimento-footer {
             padding: 15px 20px;
             background: #111;
@@ -540,10 +501,11 @@
             cursor: pointer;
             z-index: 10;
             box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-            transition: 0.3s;
+            transition: 0.3s, opacity 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
+            touch-action: manipulation; /* Evita zoom no double tap */
         }
 
         .nav-btn:hover {
@@ -551,14 +513,22 @@
             color: var(--primary);
         }
 
-        .btn-prev { left: -15px; }
-        .btn-next { right: -15px; }
+        /* INSERÇÃO: Esconde o botão se estiver desativado pelo JS */
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            background: #555;
+        }
+
+        .btn-prev { left: 0px; }
+        .btn-next { right: 0px; }
 
         @media (max-width: 768px) {
             .btn-prev { left: 5px; }
             .btn-next { right: 5px; }
         }
 
+        /* --- FAQ --- */
         .faq {
             padding: 80px 5%;
             background: var(--gray);
@@ -1093,7 +1063,7 @@
         <p>Veja os resultados reais de quem confiou em nossa consultoria.</p>
         
         <div class="carrossel-container">
-            <button class="nav-btn btn-prev" onclick="scrollDepoimentos(-1)" aria-label="Ver depoimento anterior"><i class="fas fa-chevron-left"></i></button>
+            <button class="nav-btn btn-prev" id="btnPrev" onclick="scrollDepoimentos(-1)" aria-label="Ver depoimento anterior"><i class="fas fa-chevron-left"></i></button>
             
             <div class="depoimentos-track" id="track-depoimentos">
                 
@@ -1172,7 +1142,7 @@
 
             </div>
             
-            <button class="nav-btn btn-next" onclick="scrollDepoimentos(1)" aria-label="Ver próximo depoimento"><i class="fas fa-chevron-right"></i></button>
+            <button class="nav-btn btn-next" id="btnNext" onclick="scrollDepoimentos(1)" aria-label="Ver próximo depoimento"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
 
@@ -1487,12 +1457,36 @@
             });
         });
 
-        // Lógica do Carrossel de Depoimentos
+        // INSERÇÃO CIRÚRGICA: Lógica do Carrossel blindada
+        const track = document.getElementById('track-depoimentos');
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+
+        function updateCarrosselButtons() {
+            // Verifica se está no começo
+            if (track.scrollLeft <= 0) {
+                btnPrev.disabled = true;
+            } else {
+                btnPrev.disabled = false;
+            }
+            
+            // Verifica se chegou no final (margem de erro de 2px para arredondamento do navegador)
+            if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 2) {
+                btnNext.disabled = true;
+            } else {
+                btnNext.disabled = false;
+            }
+        }
+
         function scrollDepoimentos(direction) {
-            const track = document.getElementById('track-depoimentos');
             const scrollAmount = track.querySelector('.depoimento-card').offsetWidth + 20;
             track.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
         }
+
+        // Adiciona os eventos para checar a posição sempre que rolar
+        track.addEventListener('scroll', updateCarrosselButtons);
+        // Roda uma vez no início para checar o estado inicial
+        updateCarrosselButtons();
 
         // Lógica do Accordion (FAQ)
         const faqBtns = document.querySelectorAll('.faq-btn');
