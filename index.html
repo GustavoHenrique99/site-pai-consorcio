@@ -815,6 +815,10 @@
         .option-btn:hover { border-color: var(--primary); background: rgba(200, 16, 46, 0.05); }
         .option-btn i { font-size: 20px; color: var(--primary); }
         
+        /* INSERÇÃO CIRÚRGICA: Estilos do "Radio Button" falso da V4 Company */
+        .fake-radio { margin-left: auto; width: 22px; height: 22px; border: 2px solid #ccc; border-radius: 50%; transition: all 0.2s ease; background: transparent; }
+        .option-btn:hover .fake-radio { border-color: var(--primary); border-width: 6px; }
+
         .radio-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
         .radio-btn { background: #fdfdfd; border: 1px solid #ccc; color: #333; padding: 12px; border-radius: 6px; text-align: center; font-weight: bold; cursor: pointer; transition: all 0.2s; }
         .radio-btn.selected { border-color: var(--primary); background: rgba(200, 16, 46, 0.1); color: var(--primary); }
@@ -905,11 +909,11 @@
                     <div class="step-content active" id="step1">
                         <div class="step-title">Qual o seu interesse?</div>
                         <div class="options-grid">
-                            <div class="option-btn" onclick="selectOption('Imóvel')"><i class="fas fa-home"></i> Imóvel</div>
-                            <div class="option-btn" onclick="selectOption('Veículo')"><i class="fas fa-car"></i> Veículo</div>
-                            <div class="option-btn" onclick="selectOption('Caminhão ou máquinas')"><i class="fas fa-truck"></i> Caminhão ou máquinas</div>
-                            <div class="option-btn" onclick="selectOption('Serviços')"><i class="fas fa-plane"></i> Serviços (cirurgia, viagem)</div>
-                            <div class="option-btn" onclick="selectOption('Investimentos')"><i class="fas fa-chart-line"></i> Investimentos (outros)</div>
+                            <div class="option-btn" onclick="selectOption('Imóvel')"><i class="fas fa-home"></i> Imóvel <div class="fake-radio"></div></div>
+                            <div class="option-btn" onclick="selectOption('Veículo')"><i class="fas fa-car"></i> Veículo <div class="fake-radio"></div></div>
+                            <div class="option-btn" onclick="selectOption('Caminhão ou máquinas')"><i class="fas fa-truck"></i> Caminhão ou máquinas <div class="fake-radio"></div></div>
+                            <div class="option-btn" onclick="selectOption('Serviços')"><i class="fas fa-plane"></i> Serviços (cirurgia, viagem) <div class="fake-radio"></div></div>
+                            <div class="option-btn" onclick="selectOption('Investimentos')"><i class="fas fa-chart-line"></i> Investimentos (outros) <div class="fake-radio"></div></div>
                         </div>
                         <input type="hidden" id="interesse" name="interesse">
                     </div>
