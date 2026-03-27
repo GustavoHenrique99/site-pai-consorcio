@@ -86,12 +86,15 @@
             background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(20, 0, 0, 0.8) 100%);
             background-size: cover;
             background-position: center;
-            padding: 80px 5% 60px 5%;
+            padding: 80px 5% 60px 5%; /* INSERÇÃO CIRÚRGICA: Reduzido de 110px para 80px para subir a seção inteira */
+            /* Padding reduzido para subir tudo */
             display: flex;
             flex-wrap: wrap;
             align-items: flex-start;
+            /* Alinhamento no topo */
             justify-content: center;
             gap: 40px;
+            /* Reduzi o gap entre texto e form */
             min-height: 90vh;
         }
 
@@ -111,14 +114,14 @@
             text-transform: uppercase;
             border-radius: 4px;
             display: inline-block;
-            margin-bottom: 10px; /* INSERÇÃO CIRÚRGICA: Reduzido para ficar mais próximo do título no mobile */
+            margin-bottom: 15px;
         }
 
         .hero h1 {
             font-size: 40px;
             font-weight: 900;
             line-height: 1.2;
-            margin-bottom: 10px; /* INSERÇÃO CIRÚRGICA: Reduzido para colar mais no parágrafo */
+            margin-bottom: 15px;
             text-transform: uppercase;
         }
 
@@ -130,24 +133,26 @@
             font-size: 18px;
             opacity: 0.9;
             margin-bottom: 15px;
+            /* Reduzi a margem para colar no form */
             border-left: 4px solid var(--primary);
             padding-left: 15px;
         }
 
+        /* INSERÇÃO CIRÚRGICA: Regras exclusivas para o PC (Equilibrando o design sem a grade) */
         @media (min-width: 769px) {
             .hero {
-                align-items: flex-start; 
+                align-items: flex-start; /* INSERÇÃO CIRÚRGICA: Alterado de center para flex-start para remover o buraco no topo */
             }
             .hero-content {
-                margin-top: 30px; 
+                margin-top: 30px; /* INSERÇÃO CIRÚRGICA: Alinha perfeitamente o texto com a caixa do formulário */
             }
             .hero h1 {
-                font-size: 52px; 
+                font-size: 52px; /* Título maior e imponente */
                 margin-bottom: 20px;
                 line-height: 1.15;
             }
             .hero p {
-                font-size: 20px; 
+                font-size: 20px; /* Texto de apoio mais encorpado */
                 max-width: 90%;
                 line-height: 1.5;
             }
@@ -162,6 +167,7 @@
         .form-box {
             background: var(--white);
             padding: 30px;
+            /* Padding interno um pouco menor */
             border-radius: 8px;
             width: 100%;
             max-width: 420px;
@@ -170,6 +176,8 @@
             position: relative;
             transition: all 0.3s ease-in-out;
             margin-top: -10px;
+            /* Truque para subir o bloco em relação ao texto */
+            scroll-margin-top: 100px; /* INSERÇÃO CIRÚRGICA: Protege o formulário de ser cortado pelo header fixo ao rolar a página */
         }
 
         .form-box h2 {
@@ -808,10 +816,6 @@
         .option-btn:hover { border-color: var(--primary); background: rgba(200, 16, 46, 0.05); }
         .option-btn i { font-size: 20px; color: var(--primary); }
         
-        /* INSERÇÃO CIRÚRGICA: Estilos do "Radio Button" falso da V4 Company */
-        .fake-radio { margin-left: auto; width: 22px; height: 22px; border: 2px solid #ccc; border-radius: 50%; transition: all 0.2s ease; background: transparent; }
-        .option-btn:hover .fake-radio { border-color: var(--primary); border-width: 6px; }
-
         .radio-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
         .radio-btn { background: #fdfdfd; border: 1px solid #ccc; color: #333; padding: 12px; border-radius: 6px; text-align: center; font-weight: bold; cursor: pointer; transition: all 0.2s; }
         .radio-btn.selected { border-color: var(--primary); background: rgba(200, 16, 46, 0.1); color: var(--primary); }
@@ -832,20 +836,13 @@
 
         /* Ajuste específico para Celular */
         @media (max-width: 768px) {
-            header {
-                padding: 12px 5%; /* INSERÇÃO CIRÚRGICA: Reduzido um pouco o header para sobrar mais espaço para o conteudo no mobile */
-            }
-            .logo-text {
-                font-size: 20px; /* INSERÇÃO CIRÚRGICA: Logo menor para acompanhar o header */
-            }
             .hero {
-                padding-top: 60px; /* INSERÇÃO CIRÚRGICA: Otimizado o respiro superior no mobile para o titulo não ficar escondido/muito baixo */
+                padding-top: 80px;
                 text-align: center;
             }
 
             .hero h1 {
                 font-size: 28px;
-                /* INSERÇÃO CIRÚRGICA: A tag <br> foi mantida no HTML por integridade. Mas no CSS do mobile vamos cancelar ela e forçar quebra de palavra se precisar para não dar buracos. */
             }
 
             .hero p {
@@ -889,9 +886,11 @@
         <div class="hero-content">
             <span class="tag-hero">Atendimento em Todo Brasil e Exterior</span>
             <h1 style="font-size: 32px; line-height: 1.3;">
-                Realize o sonho da Casa Própria ou Veículo, Sem Juros. <span style="color: var(--primary); font-weight: 900;">através do consórcio</span>
+                Realize o sonho da Casa Própria ou Veículo, Sem Juros.<br>
+                <span style="color: var(--primary); font-weight: 900;">através do consórcio</span>
             </h1>
             <p>Descubra como conquistar seu patrimônio com as menores taxas do mercado.</p>
+
         </div>
 
         <div class="form-box" id="simular">
