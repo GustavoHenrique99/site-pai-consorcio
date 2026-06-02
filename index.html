@@ -1397,7 +1397,7 @@
                     currency: 'BRL'
                 });
 
-                const numPai = "5531995246410";
+                const numPai = "5531998018040";
                 const msgWhatsApp = `Vim através do site! (${produtoSelecionado.toLowerCase()})`;
                 const msg = encodeURIComponent(msgWhatsApp);
                 document.getElementById('btn-whats-direto').href = `https://wa.me/${numPai}?text=${msg}`;
@@ -1410,7 +1410,7 @@
             })
             .catch(error => {
                 console.error('Erro ao conectar com o CRM:', error);
-                const numPai = "5531995246410";
+                const numPai = "5531998018040";
                 const msgWhatsApp = `Vim através do site! (${produtoSelecionado.toLowerCase()})`;
                 document.getElementById('btn-whats-direto').href = `https://wa.me/${numPai}?text=${encodeURIComponent(msgWhatsApp)}`;
                 showStep(6);
