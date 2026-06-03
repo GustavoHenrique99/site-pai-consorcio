@@ -1391,11 +1391,9 @@
                 body: JSON.stringify(payload)
             })
             .then(async response => {
-                fbq('track', 'Lead', {
-                    content_name: 'Simulação ' + produtoSelecionado,
-                    value: isNaN(valorLimpo) ? 0 : valorLimpo,
-                    currency: 'BRL'
-                });
+                // CHAMADA DA FUNÇÃO CENTRALIZADA NO API.JS
+                // O valorLimpo já foi calculado logo acima no seu código
+                dispararPixelLeadSucesso(valorLimpo);
 
                 const numPai = "5531998018040";
                 const msgWhatsApp = `Vim através do site! (${produtoSelecionado.toLowerCase()})`;
@@ -1461,13 +1459,6 @@
                     e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
                 }
             }
-        });
-
-        document.getElementById('btn-whats-direto').addEventListener('click', function() {
-            const produtoSelecionado = document.getElementById('interesse').value || "Consórcio";
-            fbq('trackCustom', 'CliqueWhatsApp', {
-                content_name: 'WhatsApp ' + produtoSelecionado
-            });
         });
 
         // Lógica do Carrossel blindada (Anti-Spam e Limites Matemáticos)
