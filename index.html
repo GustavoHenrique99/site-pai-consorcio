@@ -203,9 +203,14 @@
             }
             .hero-mobile {
                 display: block;
-                object-fit: cover; /* Cobre o fundo todo sem sobras nem cortes feios */
-                object-position: center;
-                opacity: 0.4; /* Ajuste a opacidade para o texto destacar bem */
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                /* Joga o foco da imagem totalmente para o topo, fazendo o carro subir */
+                object-position: top center; 
+                /* Se quiser que ela fique um pouco maior para destacar mais, descomente a linha abaixo: */
+                /* transform: scale(1.1); */
+                opacity: 0.45; /* Deixei um pouquinho mais visível para destacar bem */
             }
 
             .hero h1 {
