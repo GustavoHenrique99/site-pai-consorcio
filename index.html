@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="icon" href="img/logo.png" type="image/png">
     <title>Reis Consultoria Financeira</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
@@ -137,19 +138,23 @@
             .hero {
                 align-items: flex-start;
             }
+
             .hero-content {
                 margin-top: 30px;
             }
+
             .hero h1 {
                 font-size: 52px;
                 margin-bottom: 20px;
                 line-height: 1.15;
             }
+
             .hero p {
                 font-size: 20px;
                 max-width: 90%;
                 line-height: 1.5;
             }
+
             .tag-hero {
                 font-size: 14px;
                 padding: 8px 20px;
@@ -248,8 +253,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* --- OUTRAS SEÇÕES --- */
@@ -426,7 +438,8 @@
             justify-content: center;
         }
 
-        .media-container video, .media-container img {
+        .media-container video,
+        .media-container img {
             width: 100%;
             height: 100%;
             object-fit: contain;
@@ -468,7 +481,7 @@
             font-size: 18px;
             cursor: pointer;
             z-index: 10;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
             transition: 0.3s, opacity 0.3s;
             display: flex;
             align-items: center;
@@ -487,12 +500,22 @@
             color: var(--primary);
         }
 
-        .btn-prev { left: 0px; }
-        .btn-next { right: 0px; }
+        .btn-prev {
+            left: 0px;
+        }
+
+        .btn-next {
+            right: 0px;
+        }
 
         @media (max-width: 768px) {
-            .btn-prev { left: 5px; }
-            .btn-next { right: 5px; }
+            .btn-prev {
+                left: 5px;
+            }
+
+            .btn-next {
+                right: 5px;
+            }
         }
 
         /* --- FAQ --- */
@@ -513,7 +536,7 @@
             border-radius: 8px;
             border: 1px solid #eee;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
         }
 
         .faq-btn {
@@ -533,14 +556,18 @@
             transition: 0.3s;
         }
 
-        .faq-btn:hover { background: #fafafa; }
+        .faq-btn:hover {
+            background: #fafafa;
+        }
 
         .faq-btn i {
             color: var(--primary);
             transition: transform 0.3s;
         }
 
-        .faq-btn.ativo i { transform: rotate(180deg); }
+        .faq-btn.ativo i {
+            transform: rotate(180deg);
+        }
 
         .faq-resposta {
             padding: 0 20px;
@@ -552,7 +579,7 @@
             line-height: 1.6;
         }
 
-        .faq-btn.ativo + .faq-resposta {
+        .faq-btn.ativo+.faq-resposta {
             padding: 0 20px 20px 20px;
             max-height: 500px;
         }
@@ -672,9 +699,20 @@
         }
 
         @keyframes pulse-green {
-            0%   { transform: scale(1);    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70%  { transform: scale(1.03); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { transform: scale(1);    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                transform: scale(1.03);
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
         }
 
         .btn-whatsapp-pos:hover {
@@ -685,39 +723,203 @@
         /* ==========================================
            ESTILOS DO FORMULÁRIO MULTI-STEP
            ========================================== */
-        .progress-bar { width: 100%; height: 6px; background: #eee; border-radius: 10px; overflow: hidden; margin-bottom: 25px; }
-        .progress-fill { height: 100%; background: var(--primary); width: 0%; transition: width 0.4s ease; }
-        .step-content { display: none; animation: fadeIn 0.4s ease forwards; }
-        .step-content.active { display: block; }
-        .step-title { font-size: 18px; margin-bottom: 20px; text-align: center; font-weight: 800; color: var(--dark); text-transform: uppercase; }
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
 
-        .options-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
-        .option-btn { background: #fdfdfd; border: 1px solid #ccc; color: #333; padding: 14px; border-radius: 8px; text-align: left; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 12px; }
-        .option-btn:hover { border-color: var(--primary); background: rgba(200, 16, 46, 0.05); }
-        .option-btn i { font-size: 20px; color: var(--primary); }
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.4s ease;
+        }
 
-        .form-actions { margin-top: 25px; display: flex; gap: 10px; }
-        .btn-full { width: 100%; flex: 1; padding: 14px; background: var(--dark); color: white; border: none; border-radius: 6px; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.3s; border-bottom: 4px solid #333; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .btn-full:hover { background: var(--primary); border-color: #a0001e; transform: translateY(-2px); }
-        .btn-outline { background: transparent; border: 1px solid #999; color: #555; padding: 14px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
-        .btn-outline:hover { background: #eee; color: #333; }
+        .step-content {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
 
-        .success-ui { text-align: center; display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
-        .success-box-icon { display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background-color: #27ae60; border-radius: 50%; margin-bottom: 15px; }
-        .success-box-icon i { font-size: 30px; color: #fff; }
-        .success-title { font-size: 22px; font-weight: 800; color: #333; text-transform: uppercase; margin-bottom: 10px; }
-        .success-message-box p { color: #ff0000; font-weight: 900; font-size: 14px; text-transform: uppercase; margin-bottom: 20px; }
-        .link-nova-simulacao { color: var(--primary); font-weight: bold; text-decoration: underline; font-size: 14px; cursor: pointer; }
+        .step-content.active {
+            display: block;
+        }
+
+        .step-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 800;
+            color: var(--dark);
+            text-transform: uppercase;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .option-btn {
+            background: #fdfdfd;
+            border: 1px solid #ccc;
+            color: #333;
+            padding: 14px;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary);
+            background: rgba(200, 16, 46, 0.05);
+        }
+
+        .option-btn i {
+            font-size: 20px;
+            color: var(--primary);
+        }
+
+        .form-actions {
+            margin-top: 25px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-full {
+            width: 100%;
+            flex: 1;
+            padding: 14px;
+            background: var(--dark);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            border-bottom: 4px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-full:hover {
+            background: var(--primary);
+            border-color: #a0001e;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #999;
+            color: #555;
+            padding: 14px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-outline:hover {
+            background: #eee;
+            color: #333;
+        }
+
+        .success-ui {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .success-box-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: #27ae60;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .success-box-icon i {
+            font-size: 30px;
+            color: #fff;
+        }
+
+        .success-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #333;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .success-message-box p {
+            color: #ff0000;
+            font-weight: 900;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .link-nova-simulacao {
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: underline;
+            font-size: 14px;
+            cursor: pointer;
+        }
 
         /* --- MOBILE --- */
         @media (max-width: 768px) {
-            .hero { padding-top: 80px; text-align: center; }
-            .hero h1 { font-size: 28px; }
-            .hero p { border-left: none; padding: 0; font-size: 16px; }
-            .sobre { flex-direction: column-reverse; padding: 50px 5%; }
-            .sobre-img img { box-shadow: 10px 10px 0px var(--primary); }
-            .seguranca-container { gap: 15px; }
-            .form-box { margin-top: 20px; }
+            .hero {
+                padding-top: 80px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                border-left: none;
+                padding: 0;
+                font-size: 16px;
+            }
+
+            .sobre {
+                flex-direction: column-reverse;
+                padding: 50px 5%;
+            }
+
+            .sobre-img img {
+                box-shadow: 10px 10px 0px var(--primary);
+            }
+
+            .seguranca-container {
+                gap: 15px;
+            }
+
+            .form-box {
+                margin-top: 20px;
+            }
         }
     </style>
 </head>
@@ -752,13 +954,12 @@
 
                     <!-- STEP 1: Interesse -->
                     <div class="step-content active" id="step1">
-                        <div class="step-title">Qual o seu interesse?</div>
+                        <div class="step-title">Qual o seu objetivo com o veículo?</div>
                         <div class="options-grid">
-                            <div class="option-btn" onclick="selectOption('Imóvel')"><i class="fas fa-home"></i> Imóvel</div>
-                            <div class="option-btn" onclick="selectOption('Veículo')"><i class="fas fa-car"></i> Veículo</div>
-                            <div class="option-btn" onclick="selectOption('Caminhão ou máquinas')"><i class="fas fa-truck"></i> Caminhão ou máquinas</div>
-                            <div class="option-btn" onclick="selectOption('Serviços')"><i class="fas fa-plane"></i> Serviços (cirurgia, viagem)</div>
-                            <div class="option-btn" onclick="selectOption('Investimentos')"><i class="fas fa-chart-line"></i> Investimentos (outros)</div>
+                            <div class="option-btn" onclick="selectOption('Comprar Veículo Novo ou Usado')"><i
+                                    class="fas fa-car"></i> Quero Comprar um Veículo</div>
+                            <div class="option-btn" onclick="selectOption('Trocar meu Veículo Atual')"><i
+                                    class="fas fa-sync-alt"></i> Quero Trocar de Veículo</div>
                         </div>
                         <input type="hidden" id="interesse" name="interesse">
                     </div>
@@ -784,11 +985,14 @@
                         </div>
                         <div class="input-group">
                             <label>WhatsApp (DDD ou +País)</label>
-                            <input type="tel" class="phone-mask" id="whatsapp" placeholder="+55 (00) 00000-0000" required>
+                            <input type="tel" class="phone-mask" id="whatsapp" placeholder="+55 (00) 00000-0000"
+                                required>
                         </div>
                         <div class="form-actions">
-                            <button type="button" class="btn-outline" onclick="prevStep(1)"><i class="fas fa-arrow-left"></i> Voltar</button>
-                            <button type="submit" class="btn-full btn-submit">Solicitar Análise <i class="fas fa-check-circle"></i></button>
+                            <button type="button" class="btn-outline" onclick="prevStep(1)"><i
+                                    class="fas fa-arrow-left"></i> Voltar</button>
+                            <button type="submit" class="btn-full btn-submit">Solicitar Análise <i
+                                    class="fas fa-check-circle"></i></button>
                         </div>
                     </div>
 
@@ -802,8 +1006,10 @@
                             <div class="success-message-box">
                                 <p>Clique no botão abaixo para receber sua simulação agora mesmo!</p>
                             </div>
-                            <a id="btn-whats-direto" href="#" target="_blank" class="btn-whatsapp-pos" aria-label="Falar com Jefferson Reis no WhatsApp">
-                                <i class="fab fa-whatsapp" style="font-size: 22px;" aria-hidden="true"></i> Falar com Jefferson Reis
+                            <a id="btn-whats-direto" href="#" target="_blank" class="btn-whatsapp-pos"
+                                aria-label="Falar com Jefferson Reis no WhatsApp">
+                                <i class="fab fa-whatsapp" style="font-size: 22px;" aria-hidden="true"></i> Falar com
+                                Jefferson Reis
                             </a>
                             <div style="margin-top: 15px;">
                                 <span class="link-nova-simulacao" onclick="resetForm()">Fazer Nova Simulação</span>
@@ -863,11 +1069,13 @@
     </section>
 
     <section class="depoimentos">
-        <h2 class="section-title" style="color: var(--white); font-size: 30px;">Quem planeja, <span style="color: var(--primary);">realiza.</span></h2>
+        <h2 class="section-title" style="color: var(--white); font-size: 30px;">Quem planeja, <span
+                style="color: var(--primary);">realiza.</span></h2>
         <p>Veja os resultados reais de quem confiou em nossa consultoria.</p>
 
         <div class="carrossel-container">
-            <button class="nav-btn btn-prev" id="btnPrev" onclick="scrollDepoimentos(-1)" aria-label="Ver depoimento anterior"><i class="fas fa-chevron-left"></i></button>
+            <button class="nav-btn btn-prev" id="btnPrev" onclick="scrollDepoimentos(-1)"
+                aria-label="Ver depoimento anterior"><i class="fas fa-chevron-left"></i></button>
 
             <div class="depoimentos-track" id="track-depoimentos">
                 <div class="depoimento-card">
@@ -884,7 +1092,8 @@
                 </div>
                 <div class="depoimento-card">
                     <div class="media-container">
-                        <img src="img/dep1.webp" alt="Casa conquistada pelo cliente" onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
+                        <img src="img/dep1.webp" alt="Casa conquistada pelo cliente"
+                            onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
                     </div>
                     <div class="depoimento-footer">
                         <i class="fas fa-check-circle"></i>
@@ -893,7 +1102,8 @@
                 </div>
                 <div class="depoimento-card">
                     <div class="media-container">
-                        <img src="img/dep2.webp" alt="Casa conquistada pelo cliente" onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
+                        <img src="img/dep2.webp" alt="Casa conquistada pelo cliente"
+                            onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
                     </div>
                     <div class="depoimento-footer">
                         <i class="fas fa-check-circle"></i>
@@ -902,7 +1112,8 @@
                 </div>
                 <div class="depoimento-card">
                     <div class="media-container">
-                        <img src="img/dep3.webp" alt="Moto conquistada" onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
+                        <img src="img/dep3.webp" alt="Moto conquistada"
+                            onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
                     </div>
                     <div class="depoimento-footer">
                         <i class="fas fa-check-circle"></i>
@@ -911,7 +1122,8 @@
                 </div>
                 <div class="depoimento-card">
                     <div class="media-container">
-                        <img src="img/dep4.webp" alt="Casa conquistada pelo cliente" onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
+                        <img src="img/dep4.webp" alt="Casa conquistada pelo cliente"
+                            onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
                     </div>
                     <div class="depoimento-footer">
                         <i class="fas fa-check-circle"></i>
@@ -920,7 +1132,8 @@
                 </div>
                 <div class="depoimento-card">
                     <div class="media-container">
-                        <img src="img/dep5.webp" alt="Casa conquistada pelo cliente" onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
+                        <img src="img/dep5.webp" alt="Casa conquistada pelo cliente"
+                            onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
                     </div>
                     <div class="depoimento-footer">
                         <i class="fas fa-check-circle"></i>
@@ -929,7 +1142,8 @@
                 </div>
                 <div class="depoimento-card">
                     <div class="media-container">
-                        <img src="img/dep6.webp" alt="Casa conquistada pelo cliente" onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
+                        <img src="img/dep6.webp" alt="Casa conquistada pelo cliente"
+                            onerror="this.src='https://via.placeholder.com/400x400/222/fff?text=IMAGEM'">
                     </div>
                     <div class="depoimento-footer">
                         <i class="fas fa-check-circle"></i>
@@ -938,41 +1152,59 @@
                 </div>
             </div>
 
-            <button class="nav-btn btn-next" id="btnNext" onclick="scrollDepoimentos(1)" aria-label="Ver próximo depoimento"><i class="fas fa-chevron-right"></i></button>
+            <button class="nav-btn btn-next" id="btnNext" onclick="scrollDepoimentos(1)"
+                aria-label="Ver próximo depoimento"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
 
     <section class="faq">
-        <h2 class="section-title" style="color: var(--dark); font-size: 30px; text-align: center;">Perguntas <span style="color: var(--primary);">Frequentes</span></h2>
+        <h2 class="section-title" style="color: var(--dark); font-size: 30px; text-align: center;">Perguntas <span
+                style="color: var(--primary);">Frequentes</span></h2>
         <div class="faq-container">
             <div class="faq-item">
-                <button class="faq-btn">O consórcio cobra juros igual ao financiamento? <i class="fas fa-chevron-down"></i></button>
+                <button class="faq-btn">O consórcio cobra juros igual ao financiamento? <i
+                        class="fas fa-chevron-down"></i></button>
                 <div class="faq-resposta">
-                    <p><strong>Não!</strong> Essa é a principal vantagem do consórcio. Diferente do financiamento bancário, que cobra juros compostos altíssimos, o consórcio cobra apenas uma pequena Taxa de Administração, que é fixa e diluída ao longo de todas as parcelas. No final, a economia chega a ser gigantesca.</p>
+                    <p><strong>Não!</strong> Essa é a principal vantagem do consórcio. Diferente do financiamento
+                        bancário, que cobra juros compostos altíssimos, o consórcio cobra apenas uma pequena Taxa de
+                        Administração, que é fixa e diluída ao longo de todas as parcelas. No final, a economia chega a
+                        ser gigantesca.</p>
                 </div>
             </div>
             <div class="faq-item">
-                <button class="faq-btn">Consórcio demora muito para contemplar? <i class="fas fa-chevron-down"></i></button>
+                <button class="faq-btn">Consórcio demora muito para contemplar? <i
+                        class="fas fa-chevron-down"></i></button>
                 <div class="faq-resposta">
-                    <p>Não necessariamente. Dependendo do seu capital para lance, ou utilizando o "Lance Embutido", podemos traçar estratégias em grupos já em andamento para acelerar sua contemplação logo nos primeiros meses. A consultoria serve exatamente para não depender apenas da sorte dos sorteios.</p>
+                    <p>Não necessariamente. Dependendo do seu capital para lance, ou utilizando o "Lance Embutido",
+                        podemos traçar estratégias em grupos já em andamento para acelerar sua contemplação logo nos
+                        primeiros meses. A consultoria serve exatamente para não depender apenas da sorte dos sorteios.
+                    </p>
                 </div>
             </div>
             <div class="faq-item">
-                <button class="faq-btn">Não tenho dinheiro para o lance. Posso ser contemplado rápido? <i class="fas fa-chevron-down"></i></button>
+                <button class="faq-btn">Não tenho dinheiro para o lance. Posso ser contemplado rápido? <i
+                        class="fas fa-chevron-down"></i></button>
                 <div class="faq-resposta">
-                    <p>Sim! Uma excelente estratégia é o <strong>Lance Embutido</strong>. Nele, você utiliza um percentual do próprio crédito que vai receber para ofertar o lance. Ou seja, você não precisa tirar dinheiro do próprio bolso no momento da contemplação.</p>
+                    <p>Sim! Uma excelente estratégia é o <strong>Lance Embutido</strong>. Nele, você utiliza um
+                        percentual do próprio crédito que vai receber para ofertar o lance. Ou seja, você não precisa
+                        tirar dinheiro do próprio bolso no momento da contemplação.</p>
                 </div>
             </div>
             <div class="faq-item">
                 <button class="faq-btn">Posso usar meu saldo do FGTS? <i class="fas fa-chevron-down"></i></button>
                 <div class="faq-resposta">
-                    <p>Sim! Para consórcios imobiliários, você pode utilizar 100% do seu saldo do FGTS para ofertar lances (aumentando suas chances de pegar a chave rápido), complementar a carta de crédito na hora da compra, ou até mesmo amortizar as parcelas futuras.</p>
+                    <p>Sim! Para consórcios imobiliários, você pode utilizar 100% do seu saldo do FGTS para ofertar
+                        lances (aumentando suas chances de pegar a chave rápido), complementar a carta de crédito na
+                        hora da compra, ou até mesmo amortizar as parcelas futuras.</p>
                 </div>
             </div>
             <div class="faq-item">
-                <button class="faq-btn">E se eu tiver um imprevisto e atrasar a parcela? <i class="fas fa-chevron-down"></i></button>
+                <button class="faq-btn">E se eu tiver um imprevisto e atrasar a parcela? <i
+                        class="fas fa-chevron-down"></i></button>
                 <div class="faq-resposta">
-                    <p>Se você ainda não foi contemplado, o atraso apenas impede a sua participação nos sorteios daquele mês específico. Não perde o que já pagou. Caso os imprevistos continuem, há opções de diminuir a carta de crédito para reduzir a parcela. Planejamento e flexibilidade andam juntos.</p>
+                    <p>Se você ainda não foi contemplado, o atraso apenas impede a sua participação nos sorteios daquele
+                        mês específico. Não perde o que já pagou. Caso os imprevistos continuem, há opções de diminuir a
+                        carta de crédito para reduzir a parcela. Planejamento e flexibilidade andam juntos.</p>
                 </div>
             </div>
         </div>
@@ -998,16 +1230,20 @@
     <footer>
         <div class="footer-info">
             <div class="social-links">
-                <a href="https://www.instagram.com/reis.jeffersonreis" target="_blank" title="Instagram" aria-label="Visite nosso Instagram">
+                <a href="https://www.instagram.com/reis.jeffersonreis" target="_blank" title="Instagram"
+                    aria-label="Visite nosso Instagram">
                     <i class="fab fa-instagram" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.facebook.com/share/1FahqzhuGR/?mibextid=wwXIfr" target="_blank" title="Facebook" aria-label="Visite nosso Facebook">
+                <a href="https://www.facebook.com/share/1FahqzhuGR/?mibextid=wwXIfr" target="_blank" title="Facebook"
+                    aria-label="Visite nosso Facebook">
                     <i class="fab fa-facebook-f" aria-hidden="true"></i>
                 </a>
-                <a href="https://youtube.com/@reisconsultoriaefinanceira1156?si=GOjjIZc281JGM7qY" target="_blank" title="YouTube" aria-label="Visite nosso Canal no YouTube">
+                <a href="https://youtube.com/@reisconsultoriaefinanceira1156?si=GOjjIZc281JGM7qY" target="_blank"
+                    title="YouTube" aria-label="Visite nosso Canal no YouTube">
                     <i class="fab fa-youtube" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.tiktok.com/@reis.jeffersonreis?_t=ZM-8up0jftTm3L&_r=1" target="_blank" title="TikTok" aria-label="Visite nosso TikTok">
+                <a href="https://www.tiktok.com/@reis.jeffersonreis?_t=ZM-8up0jftTm3L&_r=1" target="_blank"
+                    title="TikTok" aria-label="Visite nosso TikTok">
                     <i class="fab fa-tiktok" aria-hidden="true"></i>
                 </a>
             </div>
@@ -1100,28 +1336,28 @@
                 },
                 body: JSON.stringify(payload)
             })
-            .then(async response => {
-                if (typeof dispararPixelLeadSucesso === 'function') {
-                    dispararPixelLeadSucesso(0);
-                }
+                .then(async response => {
+                    if (typeof dispararPixelLeadSucesso === 'function') {
+                        dispararPixelLeadSucesso(0);
+                    }
 
-                const numPai = "5531998917185";
-                const msgWhatsApp = `Vim através do site! (${produtoSelecionado.toLowerCase()})`;
-                const msg = encodeURIComponent(msgWhatsApp);
-                document.getElementById('btn-whats-direto').href = `https://wa.me/${numPai}?text=${msg}`;
-                showStep(6);
-            })
-            .catch(error => {
-                console.error('Erro ao conectar com o CRM:', error);
-                const numPai = "5531998917185";
-                const msgWhatsApp = `Vim através do site! (${produtoSelecionado.toLowerCase()})`;
-                document.getElementById('btn-whats-direto').href = `https://wa.me/${numPai}?text=${encodeURIComponent(msgWhatsApp)}`;
-                showStep(6);
-            })
-            .finally(() => {
-                btnSubmit.innerHTML = originalText;
-                btnSubmit.disabled = false;
-            });
+                    const numPai = "5531998917185";
+                    const msgWhatsApp = `Vim através do site! (${produtoSelecionado.toLowerCase()})`;
+                    const msg = encodeURIComponent(msgWhatsApp);
+                    document.getElementById('btn-whats-direto').href = `https://wa.me/${numPai}?text=${msg}`;
+                    showStep(6);
+                })
+                .catch(error => {
+                    console.error('Erro ao conectar com o CRM:', error);
+                    const numPai = "5531998917185";
+                    const msgWhatsApp = `Vim através do site! (${produtoSelecionado.toLowerCase()})`;
+                    document.getElementById('btn-whats-direto').href = `https://wa.me/${numPai}?text=${encodeURIComponent(msgWhatsApp)}`;
+                    showStep(6);
+                })
+                .finally(() => {
+                    btnSubmit.innerHTML = originalText;
+                    btnSubmit.disabled = false;
+                });
         });
 
         function resetForm() {
@@ -1221,4 +1457,5 @@
     </noscript>
 
 </body>
+
 </html>
