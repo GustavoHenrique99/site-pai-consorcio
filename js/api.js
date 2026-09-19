@@ -1,5 +1,30 @@
+// =========================================================================
+// CONFIGURAÇÃO DO FACEBOOK PIXEL
+// =========================================================================
+// Se os dois sites (veículos e imóveis) usam Pixels diferentes, troque o ID
+// abaixo pelo Pixel correspondente em cada domínio, ou centralize em uma
+// única variável de ambiente/config caso o código seja compartilhado.
+const FACEBOOK_PIXEL_ID = "1491480098750577";
+
+// Base code oficial do Facebook Pixel (carrega o script fbevents.js)
+!function (f, b, e, v, n, t, s) {
+    if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+    };
+    if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+    n.queue = []; t = b.createElement(e); t.async = !0;
+    t.src = v; s = b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t, s)
+}(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', FACEBOOK_PIXEL_ID);
+fbq('track', 'PageView');
+
+// =========================================================================
+// CONFIGURAÇÃO DO BACKEND / CRM
+// =========================================================================
 // Verifique no seu Render se a URL é 'consorcio-hub-api' ou 'elite-crm-backend'
-const API_URL = "https://elite-crm-backend.onrender.com"; 
+const API_URL = "https://elite-crm-backend.onrender.com";
 
 /**
  * Envia leads para o CRM com suporte a PARCELA e QUALIFICAÇÃO
@@ -29,10 +54,10 @@ async function enviarLeadParaCRM(dados) {
         });
 
         if (!response.ok) {
-            const errorData = await response.json();
+            const errorData = await response.json().catch(() => ({}));
             throw new Error(errorData.detail || "Erro de integração");
         }
-        
+
         return await response.json();
     } catch (error) {
         console.error("❌ Erro na sincronização:", error);
@@ -41,24 +66,37 @@ async function enviarLeadParaCRM(dados) {
 }
 
 // =========================================================================
-// CORREÇÃO CIRÚRGICA DO PIXEL: Pegando o interesse real do Passo 1
+// PIXEL DE LEAD: dispara sempre que o usuário completa o formulário
 // =========================================================================
-
-// Esta função deve ser chamada dentro do bloco try/catch do envio do formulário, 
-// LOGO APÓS o 'await enviarLeadParaCRM(dadosParaEnviar)'.
-
+// IMPORTANTE: esta função precisa ser chamada tanto no sucesso (.then)
+// quanto na falha de rede/CORS (.catch) do envio do formulário no
+// index.html — porque nos dois casos o usuário já preencheu tudo e viu a
+// tela de sucesso com o botão do WhatsApp. Se você só disparar no .then,
+// perde a contagem de leads sempre que o CRM estiver fora do ar.
 function dispararPixelLeadSucesso(valorCredito) {
+    if (typeof fbq !== 'function') {
+        console.warn('fbq não está definido — Pixel não carregou.');
+        return;
+    }
+
     // Busca o valor que o cliente selecionou no Passo 1 (guardado no input hidden)
-    const interesseReal = document.getElementById('interesse').value || "Consórcio";
-    
+    const interesseEl = document.getElementById('interesse');
+    const interesseReal = (interesseEl && interesseEl.value) || "Consórcio";
+
     // Converte o valor limpo para o Pixel (ex: 100000)
     const valorParaPixel = parseFloat(valorCredito) || 0;
 
-    // Dispara o Pixel com o interesse correto no 'content_name'
-    // Ex: 'Simulação Imóvel', 'Simulação Veículo'
-    fbq('track', 'Lead', {
-        content_name: 'Simulação ' + interesseReal, 
-        value: valorParaPixel,
-        currency: 'BRL'
-    });
+    const eventPayload = {
+        content_name: 'Simulação ' + interesseReal,
+        content_category: 'Consórcio'
+    };
+
+    // Só envia value/currency se houver um valor real, para não distorcer
+    // otimizações futuras por valor de lead com um monte de eventos "R$0".
+    if (valorParaPixel > 0) {
+        eventPayload.value = valorParaPixel;
+        eventPayload.currency = 'BRL';
+    }
+
+    fbq('track', 'Lead', eventPayload);
 }

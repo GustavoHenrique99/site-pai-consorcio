@@ -91,8 +91,10 @@
             justify-content: center;
             gap: 40px;
             min-height: 90vh;
-            position: relative; /* Essencial para conter a imagem */
-            overflow: hidden;    /* Esconde o que passar da borda */
+            position: relative;
+            /* Essencial para conter a imagem */
+            overflow: hidden;
+            /* Esconde o que passar da borda */
         }
 
         /* Estilo padrão das imagens de fundo */
@@ -104,19 +106,23 @@
             height: 100%;
             object-fit: cover;
             z-index: 0;
-            opacity: 0.4; /* Ajuste a opacidade como preferir */
+            opacity: 0.4;
+            /* Ajuste a opacidade como preferir */
         }
 
         /* No PC, esconde a imagem do celular e mostra a do PC */
         .hero-mobile {
             display: none;
         }
+
         .hero-desktop {
             display: block;
         }
 
         /* Garante que o conteúdo fique na frente */
-        .hero-content, .form-box, header {
+        .hero-content,
+        .form-box,
+        header {
             position: relative;
             z-index: 1;
         }
@@ -193,27 +199,31 @@
         @media (max-width: 768px) {
             .hero {
                 padding-top: 80px;
-                padding-bottom: 40px; /* Dá uma folga embaixo */
+                padding-bottom: 40px;
+                /* Dá uma folga embaixo */
                 text-align: center;
-                min-height: auto; /* Deixa o tamanho se ajustar ao conteúdo */
+                min-height: auto;
+                /* Deixa o tamanho se ajustar ao conteúdo */
             }
 
             /* Mantém a imagem cobrindo o fundo inteiro perfeitamente */
             .hero-desktop {
                 display: none;
             }
+
             .hero-mobile {
                 display: block;
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                object-position: center 20%; /* Posiciona a foto focada mais para cima */
+                object-position: center 20%;
+                /* Posiciona a foto focada mais para cima */
                 opacity: 0.45;
             }
 
             /* Empurra o formulário um pouco para baixo e dá margem para o carro aparecer no meio */
             .form-box {
-                margin-top: 30px; 
+                margin-top: 30px;
                 position: relative;
                 z-index: 2;
             }
@@ -966,7 +976,6 @@
             font-size: 14px;
             cursor: pointer;
         }
-
     </style>
 </head>
 
@@ -1006,8 +1015,8 @@
                     <div class="step-content active" id="step1">
                         <div class="step-title">Qual o seu objetivo?</div>
                         <div class="options-grid">
-                            <div class="option-btn" onclick="selectOption('Comprar Veículo')"><i
-                                    class="fas fa-car"></i> Quero Comprar um Veículo</div>
+                            <div class="option-btn" onclick="selectOption('Comprar Veículo')"><i class="fas fa-car"></i>
+                                Quero Comprar um Veículo</div>
                             <div class="option-btn" onclick="selectOption('Trocar de Veículo')"><i
                                     class="fas fa-sync-alt"></i> Quero Trocar de Veículo</div>
                         </div>
@@ -1399,6 +1408,9 @@
                 })
                 .catch(error => {
                     console.error('Erro ao conectar com o CRM:', error);
+                    if (typeof dispararPixelLeadSucesso === 'function') {
+                        dispararPixelLeadSucesso(0);
+                    }
                     const numPai = "5531998917185";
                     const msgWhatsApp = `Vim através do site! (${produtoSelecionado.toLowerCase()})`;
                     document.getElementById('btn-whats-direto').href = `https://wa.me/${numPai}?text=${encodeURIComponent(msgWhatsApp)}`;
@@ -1487,24 +1499,6 @@
             });
         });
     </script>
-
-    <script>
-        !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return; n = f.fbq = function () {
-                n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-            n.queue = []; t = b.createElement(e); t.async = !0;
-            t.src = v; s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1491480098750577');
-        fbq('track', 'PageView');
-    </script>
-    <noscript>
-        <img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=1491480098750577&ev=PageView&noscript=1" />
-    </noscript>
 
 </body>
 
